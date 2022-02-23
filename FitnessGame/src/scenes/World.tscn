@@ -5,4 +5,4 @@
 [node name="World" type="Node2D"]
 
 [node name="KungFuMan" parent="." instance=ExtResource( 1 )]
-speed = 250.0
+speed = 200.0
