@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/ui/controller_buttons/up.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/controller_buttons/up_pressed.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/controller_buttons/down.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/controller_buttons/down_pressed.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/controller_buttons/left_pressed.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/controller_buttons/left.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/controller_buttons/right.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/controller_buttons/right_pressed.png" type="Texture" id=8]
+[ext_resource path="res://src/scripts/ControllerButtons.gd" type="Script" id=9]
+
+[node name="ControllerButtons" type="Node2D"]
+scale = Vector2( 3, 3 )
+script = ExtResource( 9 )
+
+[node name="UpButton" type="TouchScreenButton" parent="."]
+position = Vector2( -8, -24 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 2 )
+
+[node name="DownButton" type="TouchScreenButton" parent="."]
+position = Vector2( -8, 8 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+
+[node name="LeftButton" type="TouchScreenButton" parent="."]
+position = Vector2( -24, -8 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 5 )
+
+[node name="RightButton" type="TouchScreenButton" parent="."]
+position = Vector2( 8, -8 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 8 )
+
+[connection signal="pressed" from="UpButton" to="." method="_on_UpButton_pressed"]
+[connection signal="released" from="UpButton" to="." method="_on_UpButton_released"]
+[connection signal="pressed" from="DownButton" to="." method="_on_DownButton_pressed"]
+[connection signal="released" from="DownButton" to="." method="_on_DownButton_released"]
+[connection signal="pressed" from="LeftButton" to="." method="_on_LeftButton_pressed"]
+[connection signal="released" from="LeftButton" to="." method="_on_LeftButton_released"]
+[connection signal="pressed" from="RightButton" to="." method="_on_RightButton_pressed"]
+[connection signal="released" from="RightButton" to="." method="_on_RightButton_released"]
