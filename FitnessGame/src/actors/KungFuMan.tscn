@@ -8,6 +8,7 @@ extents = Vector2( 15, 24 )
 
 [node name="KungFuMan" type="KinematicBody2D"]
 position = Vector2( 0, -22 )
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -17,3 +18,9 @@ animation = "idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.8, 0.8 )
+smoothing_enabled = true
+smoothing_speed = 10.0
