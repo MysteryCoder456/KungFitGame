@@ -4,13 +4,14 @@
 [ext_resource path="res://src/scripts/KungFuMan.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 27, 41 )
+extents = Vector2( 15, 24 )
 
 [node name="KungFuMan" type="KinematicBody2D"]
+position = Vector2( 0, -22 )
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 3.5, 3.5 )
+scale = Vector2( 2, 2 )
 frames = ExtResource( 1 )
 animation = "idle_down"
 
