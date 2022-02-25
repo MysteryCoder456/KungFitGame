@@ -24,4 +24,4 @@ current = true
 zoom = Vector2( 0.4, 0.4 )
 
 [node name="ControllerButtons" parent="Camera2D" instance=ExtResource( 3 )]
-position = Vector2( -136, 54 )
+position = Vector2( -160, 54 )
