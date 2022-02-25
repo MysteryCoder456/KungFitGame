@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/sprite_frames/Enemy.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://src/scripts/Enemy.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 7, 12 )
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
+script = ExtResource( 2 )
+speed = 35.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.68, 0.68 )
