@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon1.png-6195d6245b38329523ea97b41d89de5f.stex"
+path="res://.import/ipad76.png-13c05b7d8cf6bdb8ec00e03513de2c65.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/icon1.png"
-dest_files=[ "res://.import/icon1.png-6195d6245b38329523ea97b41d89de5f.stex" ]
+source_file="res://assets/icons/ios/ipad76.png"
+dest_files=[ "res://.import/ipad76.png-13c05b7d8cf6bdb8ec00e03513de2c65.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

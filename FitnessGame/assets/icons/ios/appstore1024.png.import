@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon3.png-b7d3b03fa9f5d12babd649fef12dbfef.stex"
+path="res://.import/appstore1024.png-dc3d0784be491258399e9c66def9ebc8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/icon3.png"
-dest_files=[ "res://.import/icon3.png-b7d3b03fa9f5d12babd649fef12dbfef.stex" ]
+source_file="res://assets/icons/ios/appstore1024.png"
+dest_files=[ "res://.import/appstore1024.png-dc3d0784be491258399e9c66def9ebc8.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
