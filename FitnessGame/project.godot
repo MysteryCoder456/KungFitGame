@@ -22,7 +22,7 @@ _global_script_class_icons={
 
 config/name="FitnessGame"
 run/main_scene="res://src/scenes/World.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/icons/ios/appstore1024.png"
 
 [display]
 
