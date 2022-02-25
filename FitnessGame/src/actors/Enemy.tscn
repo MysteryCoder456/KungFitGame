@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/sprite_frames/Enemy.tres" type="SpriteFrames" id=1]
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 7, 12 )
+
+[node name="Enemy" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.68, 0.68 )
+frames = ExtResource( 1 )
+animation = "running_horizontal"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 14 )
