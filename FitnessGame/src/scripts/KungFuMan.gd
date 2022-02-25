@@ -1,3 +1,4 @@
+class_name KungFuMan
 extends KinematicBody2D
 
 const DIRECTION_STRINGS = ["up", "down", "left", "right"]
@@ -48,8 +49,7 @@ func _physics_process(delta: float):
 				state = State.IDLE
 
 			animated_sprite.play("running_%s" % dir_str)
-
-	velocity = move_and_slide(velocity)
+			velocity = move_and_slide(velocity)
 
 
 func get_movement_vel() -> Vector2:

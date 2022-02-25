@@ -5,7 +5,7 @@
 [ext_resource path="res://src/scenes/ControllerButtons.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 12 )
+extents = Vector2( 7, 11 )
 
 [node name="KungFuMan" type="KinematicBody2D"]
 position = Vector2( 0, -22 )

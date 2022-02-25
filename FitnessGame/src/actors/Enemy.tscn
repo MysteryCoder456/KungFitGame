@@ -4,9 +4,9 @@
 [ext_resource path="res://src/scripts/Enemy.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 7, 12 )
+extents = Vector2( 6, 11 )
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="Enemy" type="KinematicBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource( 2 )
