@@ -7,15 +7,24 @@
 extents = Vector2( 6, 11 )
 
 [node name="Enemy" type="KinematicBody2D" groups=["Enemy"]]
+position = Vector2( 0, -10 )
 collision_layer = 2
 collision_mask = 4
 script = ExtResource( 2 )
 speed = 35.0
+attack_damage_min = 5
+attack_damage_max = 15
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.68, 0.68 )
 frames = ExtResource( 1 )
-animation = "running_horizontal"
+animation = "running_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 14 )
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.66
+one_shot = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

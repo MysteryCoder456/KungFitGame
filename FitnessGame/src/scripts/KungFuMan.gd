@@ -67,3 +67,8 @@ func get_movement_vel() -> Vector2:
 
 	new_velocity *= speed
 	return new_velocity
+
+
+func damage(damage_amount: int):
+	# TODO
+	print("ow")

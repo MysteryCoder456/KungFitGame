@@ -13,6 +13,8 @@ enum State {
 }
 
 export var speed: float
+export var attack_damage_min: int
+export var attack_damage_max: int
 
 var velocity = Vector2.ZERO
 var direction = Direction.DOWN
@@ -23,6 +25,7 @@ var nav: Navigation2D
 var path = []
 
 onready var animated_sprite = $AnimatedSprite
+onready var attack_timer = $AttackTimer
 
 
 func init(_target: KungFuMan, _nav: Navigation2D):
@@ -48,12 +51,20 @@ func _physics_process(delta: float):
 	var dir_str = DIRECTION_STRINGS[direction]
 
 	match state:
+		State.ATTACKING:
+			if global_position.distance_to(target.global_position) <= pathfinding_threshold:
+				if attack_timer.is_stopped():
+					attack_timer.start()
+				animated_sprite.play("attacking")
+			else:
+				state = State.RUNNING
+
 		State.RUNNING:
 			if global_position.distance_to(target.global_position) <= pathfinding_threshold:
 				state = State.ATTACKING
 
-			animated_sprite.play("running_%s" % dir_str)
 			velocity = move_and_slide(velocity)
+			animated_sprite.play("running_%s" % dir_str)
 
 
 func get_movement_vel() -> Vector2:
@@ -70,3 +81,7 @@ func get_movement_vel() -> Vector2:
 
 func get_path_to_target():
 	path = nav.get_simple_path(global_position, target.global_position)
+
+
+func _on_AttackTimer_timeout():
+	target.damage((randi() % (attack_damage_max - attack_damage_min)) + (attack_damage_min))
