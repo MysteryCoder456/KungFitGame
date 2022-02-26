@@ -11,7 +11,6 @@
 [ext_resource path="res://src/scripts/ControllerButtons.gd" type="Script" id=9]
 
 [node name="ControllerButtons" type="Node2D"]
-scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 9 )
 
 [node name="UpButton" type="TouchScreenButton" parent="."]

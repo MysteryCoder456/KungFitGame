@@ -8,6 +8,7 @@ onready var enemies = $Enemies
 
 
 func _ready():
+	# TODO: Add wave system
 	var new_enemy = ENEMY_SCENE.instance()
 	new_enemy.init(player, nav)
 	enemies.add_child(new_enemy)

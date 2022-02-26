@@ -21,6 +21,7 @@ var direction = Direction.DOWN
 var state = State.IDLE
 
 onready var animated_sprite = $AnimatedSprite
+onready var hud = $CanvasLayer/HUD
 
 
 func _physics_process(delta: float):

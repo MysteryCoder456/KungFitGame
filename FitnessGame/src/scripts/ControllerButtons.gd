@@ -1,7 +1,7 @@
 extends Node2D
 
-func _ready():
-	visible = OS.get_name() in ["iOS", "Android", "UWP"]
+#func _ready():
+##	visible = OS.get_name() in ["iOS", "Android", "UWP"]
 
 
 func _on_UpButton_pressed():

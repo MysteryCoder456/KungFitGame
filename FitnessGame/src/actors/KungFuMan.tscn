@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/sprite_frames/KungFuMan.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://src/scripts/KungFuMan.gd" type="Script" id=2]
-[ext_resource path="res://src/scenes/ControllerButtons.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/scenes/HUD.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 11 )
@@ -24,5 +24,6 @@ shape = SubResource( 1 )
 current = true
 zoom = Vector2( 0.4, 0.4 )
 
-[node name="ControllerButtons" parent="Camera2D" instance=ExtResource( 3 )]
-position = Vector2( -160, 54 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 4 )]
