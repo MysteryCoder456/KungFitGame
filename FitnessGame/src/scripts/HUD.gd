@@ -1,7 +1,7 @@
 extends Control
 
-onready var health_bar = $TopBar/HealthBar
-onready var wave_label = $TopBar/WaveLabel
+onready var health_bar: ProgressBar = $TopBar/HealthBar
+onready var wave_label: Label = $TopBar/WaveLabel
 
 
 func _ready():

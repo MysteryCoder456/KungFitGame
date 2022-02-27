@@ -15,10 +15,15 @@ enum State {
 }
 
 export var speed: float
+export var raw_max_health: float  # Base health value to modify with multiplier upgrades
+export var health_multiplier: float  # TODO: Make this an upgrade later
 
 var velocity = Vector2.ZERO
 var direction = Direction.DOWN
 var state = State.IDLE
+
+onready var actual_max_health = raw_max_health * health_multiplier
+onready var health = actual_max_health
 
 onready var animated_sprite = $AnimatedSprite
 onready var hud = $CanvasLayer/HUD
@@ -69,6 +74,10 @@ func get_movement_vel() -> Vector2:
 	return new_velocity
 
 
-func damage(damage_amount: int):
-	# TODO
-	print("ow")
+func set_health(amount: float):
+	health = max(amount, 0)
+	hud.health_bar.value = lerp(0, hud.health_bar.max_value, health / actual_max_health)
+
+
+func damage(damage_amount: float):
+	set_health(health - damage_amount)

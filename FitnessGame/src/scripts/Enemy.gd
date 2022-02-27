@@ -13,8 +13,8 @@ enum State {
 }
 
 export var speed: float
-export var attack_damage_min: int
-export var attack_damage_max: int
+export var attack_damage_min: float
+export var attack_damage_max: float
 
 var velocity = Vector2.ZERO
 var direction = Direction.DOWN
@@ -84,4 +84,5 @@ func get_path_to_target():
 
 
 func _on_AttackTimer_timeout():
-	target.damage((randi() % (attack_damage_max - attack_damage_min)) + (attack_damage_min))
+	var damage_value = lerp(attack_damage_min, attack_damage_max, randf())
+	target.damage(damage_value)
