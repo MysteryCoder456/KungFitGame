@@ -74,10 +74,7 @@ func get_movement_vel() -> Vector2:
 	return new_velocity
 
 
-func set_health(amount: float):
-	health = max(amount, 0)
-	hud.health_bar.value = lerp(0, hud.health_bar.max_value, health / actual_max_health)
-
-
 func damage(damage_amount: float):
-	set_health(health - damage_amount)
+	health -= damage_amount
+	var bar_value = lerp(0, hud.health_bar.max_value, health / actual_max_health)
+	hud.set_health_bar_value(bar_value)

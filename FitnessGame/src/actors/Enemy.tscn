@@ -12,8 +12,8 @@ collision_layer = 2
 collision_mask = 4
 script = ExtResource( 2 )
 speed = 35.0
-attack_damage_min = 5
-attack_damage_max = 15
+attack_damage_min = 5.0
+attack_damage_max = 15.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.68, 0.68 )

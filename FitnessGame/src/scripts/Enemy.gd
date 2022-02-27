@@ -61,6 +61,7 @@ func _physics_process(delta: float):
 
 		State.RUNNING:
 			if global_position.distance_to(target.global_position) <= pathfinding_threshold:
+				do_damage_to_target()
 				state = State.ATTACKING
 
 			velocity = move_and_slide(velocity)
@@ -83,6 +84,11 @@ func get_path_to_target():
 	path = nav.get_simple_path(global_position, target.global_position)
 
 
-func _on_AttackTimer_timeout():
+func do_damage_to_target():
 	var damage_value = lerp(attack_damage_min, attack_damage_max, randf())
 	target.damage(damage_value)
+
+
+func _on_AttackTimer_timeout():
+	if global_position.distance_to(target.global_position) <= pathfinding_threshold:
+		do_damage_to_target()

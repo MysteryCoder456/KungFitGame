@@ -55,3 +55,9 @@ valign = 1
 [node name="ControllerButtons" parent="." instance=ExtResource( 1 )]
 position = Vector2( 96, 424 )
 scale = Vector2( 3.5, 3.5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HealthAnimationTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
