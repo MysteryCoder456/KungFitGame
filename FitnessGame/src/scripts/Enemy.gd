@@ -104,7 +104,7 @@ func do_damage_to_target():
 func damage(damage_amount: float, knockback_direction: Vector2, knockback_multiplier: float):
 	health -= damage_amount
 	if health <= 0:
-		# TODO: Make a death and hit animation
+		# TODO: Make a death animation
 		print("ded")
 		get_parent().remove_child(self)
 		queue_free()
