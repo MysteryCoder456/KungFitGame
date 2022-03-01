@@ -107,18 +107,42 @@ func damage(damage_amount: float):
 
 
 func stick_attack():
+	var kb_dir: Vector2
+
+	match direction:
+		Direction.UP:
+			kb_dir = Vector2.UP
+		Direction.DOWN:
+			kb_dir = Vector2.DOWN
+		Direction.LEFT:
+			kb_dir = Vector2.LEFT
+		Direction.RIGHT:
+			kb_dir = Vector2.RIGHT
+
 	for enemy in enemies[direction]:
-		enemy.damage(actual_strength)
+		enemy.damage(actual_strength, kb_dir, 1)
 
 	state = State.STICKING
 	attack_timer.start()
 
 
 func kick_attack():
+	var kb_dir: Vector2
+
+	match direction:
+		Direction.UP:
+			kb_dir = Vector2.UP
+		Direction.DOWN:
+			kb_dir = Vector2.DOWN
+		Direction.LEFT:
+			kb_dir = Vector2.LEFT
+		Direction.RIGHT:
+			kb_dir = Vector2.RIGHT
+
 	for enemy in enemies[direction]:
 		# Kick does twice the damage as stick but leaves
 		# the player vulnerable to attacks for longer
-		enemy.damage(actual_strength * 2)
+		enemy.damage(actual_strength * 2, kb_dir, 2)
 
 	state = State.KICKING
 	attack_timer.start()

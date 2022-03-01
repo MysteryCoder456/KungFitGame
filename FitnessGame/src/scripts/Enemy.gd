@@ -10,10 +10,12 @@ enum Direction {
 
 enum State {
 	RUNNING,
-	ATTACKING
+	ATTACKING,
+	STUNNED
 }
 
 export var speed: float
+export var knockback_speed: float
 export var attack_damage_min: float
 export var attack_damage_max: float
 export var starting_health: float
@@ -28,8 +30,9 @@ var path = []
 
 onready var health = starting_health
 
-onready var animated_sprite = $AnimatedSprite
-onready var attack_timer = $AttackTimer
+onready var animated_sprite: AnimatedSprite = $AnimatedSprite
+onready var attack_timer: Timer = $AttackTimer
+onready var stun_timer: Timer = $StunTimer
 
 
 func init(_target, _nav: Navigation2D):
@@ -38,8 +41,6 @@ func init(_target, _nav: Navigation2D):
 
 
 func _physics_process(delta: float):
-	velocity = get_movement_vel()
-
 	if velocity.y < 0:
 		direction = Direction.UP
 	elif velocity.y > 0:
@@ -64,12 +65,19 @@ func _physics_process(delta: float):
 				state = State.RUNNING
 
 		State.RUNNING:
+			velocity = get_movement_vel()
+
 			if global_position.distance_to(target.global_position) <= pathfinding_threshold:
 				do_damage_to_target()
 				state = State.ATTACKING
 
 			velocity = move_and_slide(velocity)
 			animated_sprite.play("running_%s" % dir_str)
+
+		State.STUNNED:
+			velocity *= 0.968
+			velocity = move_and_slide(velocity)
+			animated_sprite.play("stun")
 
 
 func get_movement_vel() -> Vector2:
@@ -93,15 +101,24 @@ func do_damage_to_target():
 	target.damage(damage_value)
 
 
-func damage(damage_amount: float):
+func damage(damage_amount: float, knockback_direction: Vector2, knockback_multiplier: float):
 	health -= damage_amount
 	if health <= 0:
 		# TODO: Make a death and hit animation
 		print("ded")
 		get_parent().remove_child(self)
 		queue_free()
+	else:
+		state = State.STUNNED
+		velocity += knockback_direction.normalized() * knockback_speed * knockback_multiplier
+		stun_timer.start()
 
 
 func _on_AttackTimer_timeout():
 	if global_position.distance_to(target.global_position) <= pathfinding_threshold:
 		do_damage_to_target()
+
+
+func _on_StunTimer_timeout():
+	if state == State.STUNNED:
+		state = State.RUNNING
