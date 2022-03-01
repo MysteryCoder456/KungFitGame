@@ -11,7 +11,9 @@ enum Direction {
 
 enum State {
 	IDLE
-	RUNNING
+	RUNNING,
+	STICKING,
+	KICKING
 }
 
 export var speed: float
@@ -22,11 +24,23 @@ var velocity = Vector2.ZERO
 var direction = Direction.DOWN
 var state = State.IDLE
 
+var enemies_above: Array = []
+var enemies_below: Array = []
+var enemies_on_right: Array = []
+var enemies_on_left: Array = []
+
 onready var actual_max_health = raw_max_health * health_multiplier
 onready var health = actual_max_health
 
 onready var animated_sprite = $AnimatedSprite
 onready var hud = $CanvasLayer/HUD
+
+
+func _input(event: InputEvent):
+	if event.is_action_pressed("stick_attack"):
+		stick_attack()
+	elif event.is_action_pressed("kick_attack"):
+		kick_attack()
 
 
 func _physics_process(delta: float):
@@ -78,3 +92,41 @@ func damage(damage_amount: float):
 	health -= damage_amount
 	var bar_value = lerp(0, hud.health_bar.max_value, health / actual_max_health)
 	hud.set_health_bar_value(bar_value)
+
+
+func stick_attack():
+	# TODO
+	state = State.STICKING
+
+
+func kick_attack():
+	# TODO
+	state = State.KICKING
+
+
+func _on_UpEnemyDetector_body_entered(body: Enemy):
+	enemies_above.append(body)
+
+func _on_UpEnemyDetector_body_exited(body: Enemy):
+	enemies_above.erase(body)
+
+
+func _on_DownEnemyDetector_body_entered(body: Enemy):
+	enemies_below.append(body)
+
+func _on_DownEnemyDetector_body_exited(body: Enemy):
+	enemies_below.erase(body)
+
+
+func _on_LeftEnemyDetector_body_entered(body: Enemy):
+	enemies_on_left.append(body)
+
+func _on_LeftEnemyDetector_body_exited(body: Enemy):
+	enemies_on_left.erase(body)
+
+
+func _on_RightEnemyDetector_body_entered(body: Enemy):
+	enemies_on_right.append(body)
+
+func _on_RightEnemyDetector_body_exited(body: Enemy):
+	enemies_on_right.erase(body)

@@ -1,3 +1,4 @@
+class_name Enemy
 extends KinematicBody2D
 
 const DIRECTION_STRINGS = ["up", "down", "horizontal"]
