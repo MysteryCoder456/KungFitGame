@@ -214,17 +214,17 @@ animations = [ {
 "frames": [ ExtResource( 16 ) ],
 "loop": false,
 "name": "kick_attack_down",
-"speed": 2.0
+"speed": 1.5
 }, {
 "frames": [ ExtResource( 15 ) ],
 "loop": false,
 "name": "kick_attack_right",
-"speed": 2.0
+"speed": 1.5
 }, {
 "frames": [ ExtResource( 14 ) ],
 "loop": false,
 "name": "kick_attack_left",
-"speed": 2.0
+"speed": 1.5
 }, {
 "frames": [ SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
 "loop": false,
@@ -239,7 +239,7 @@ animations = [ {
 "frames": [ ExtResource( 13 ) ],
 "loop": false,
 "name": "kick_attack_up",
-"speed": 2.0
+"speed": 1.5
 }, {
 "frames": [ SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ) ],
 "loop": false,

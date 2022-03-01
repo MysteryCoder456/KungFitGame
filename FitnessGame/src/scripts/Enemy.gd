@@ -16,6 +16,7 @@ enum State {
 export var speed: float
 export var attack_damage_min: float
 export var attack_damage_max: float
+export var starting_health: float
 
 var velocity = Vector2.ZERO
 var direction = Direction.DOWN
@@ -24,6 +25,8 @@ var pathfinding_threshold = 12
 var target: Node2D
 var nav: Navigation2D
 var path = []
+
+onready var health = starting_health
 
 onready var animated_sprite = $AnimatedSprite
 onready var attack_timer = $AttackTimer
@@ -88,6 +91,15 @@ func get_path_to_target():
 func do_damage_to_target():
 	var damage_value = lerp(attack_damage_min, attack_damage_max, randf())
 	target.damage(damage_value)
+
+
+func damage(damage_amount: float):
+	health -= damage_amount
+	if health <= 0:
+		# TODO: Make a death and hit animation
+		print("ded")
+		get_parent().remove_child(self)
+		queue_free()
 
 
 func _on_AttackTimer_timeout():

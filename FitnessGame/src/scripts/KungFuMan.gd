@@ -17,20 +17,24 @@ enum State {
 }
 
 export var speed: float
-export var raw_max_health: float  # Base health value to modify with multiplier upgrades
-export var health_multiplier: float  # TODO: Make this an upgrade later
+
+# Base values to modify with multiplier upgrades
+export var raw_max_health: float
+export var raw_strength: float
+
+# TODO: Make these upgrades later
+export var health_multiplier: float
+export var strength_multiplier: float
 
 var velocity = Vector2.ZERO
 var direction = Direction.DOWN
 var state = State.IDLE
-
-var enemies_above: Array = []
-var enemies_below: Array = []
-var enemies_on_right: Array = []
-var enemies_on_left: Array = []
+var enemies = [[], [], [], []]  # Array of arrays for each direction
 
 onready var actual_max_health = raw_max_health * health_multiplier
 onready var health = actual_max_health
+
+onready var actual_strength = raw_strength * strength_multiplier
 
 onready var animated_sprite: AnimatedSprite = $AnimatedSprite
 onready var hud: PlayerHUD = $CanvasLayer/HUD
@@ -48,15 +52,6 @@ func _input(event: InputEvent):
 func _physics_process(delta: float):
 	velocity = get_movement_vel()
 
-	if velocity.y < 0:
-		direction = Direction.UP
-	elif velocity.y > 0:
-		direction = Direction.DOWN
-	elif velocity.x < 0:
-		direction = Direction.LEFT
-	elif velocity.x > 0:
-		direction = Direction.RIGHT
-
 	var dir_str = DIRECTION_STRINGS[direction]
 
 	match state:
@@ -69,6 +64,15 @@ func _physics_process(delta: float):
 		State.RUNNING:
 			if velocity == Vector2.ZERO:
 				state = State.IDLE
+
+			if velocity.y < 0:
+				direction = Direction.UP
+			elif velocity.y > 0:
+				direction = Direction.DOWN
+			elif velocity.x < 0:
+				direction = Direction.LEFT
+			elif velocity.x > 0:
+				direction = Direction.RIGHT
 
 			animated_sprite.play("running_%s" % dir_str)
 			velocity = move_and_slide(velocity)
@@ -103,43 +107,49 @@ func damage(damage_amount: float):
 
 
 func stick_attack():
-	# TODO
+	for enemy in enemies[direction]:
+		enemy.damage(actual_strength)
+
 	state = State.STICKING
 	attack_timer.start()
 
 
 func kick_attack():
-	# TODO
+	for enemy in enemies[direction]:
+		# Kick does twice the damage as stick but leaves
+		# the player vulnerable to attacks for longer
+		enemy.damage(actual_strength * 2)
+
 	state = State.KICKING
 	attack_timer.start()
 
 
 func _on_UpEnemyDetector_body_entered(body: Enemy):
-	enemies_above.append(body)
+	enemies[Direction.UP].append(body)
 
 func _on_UpEnemyDetector_body_exited(body: Enemy):
-	enemies_above.erase(body)
+	enemies[Direction.UP].erase(body)
 
 
 func _on_DownEnemyDetector_body_entered(body: Enemy):
-	enemies_below.append(body)
+	enemies[Direction.DOWN].append(body)
 
 func _on_DownEnemyDetector_body_exited(body: Enemy):
-	enemies_below.erase(body)
+	enemies[Direction.DOWN].erase(body)
 
 
 func _on_LeftEnemyDetector_body_entered(body: Enemy):
-	enemies_on_left.append(body)
+	enemies[Direction.LEFT].append(body)
 
 func _on_LeftEnemyDetector_body_exited(body: Enemy):
-	enemies_on_left.erase(body)
+	enemies[Direction.LEFT].erase(body)
 
 
 func _on_RightEnemyDetector_body_entered(body: Enemy):
-	enemies_on_right.append(body)
+	enemies[Direction.RIGHT].append(body)
 
 func _on_RightEnemyDetector_body_exited(body: Enemy):
-	enemies_on_right.erase(body)
+	enemies[Direction.RIGHT].erase(body)
 
 
 func _on_AnimatedSprite_animation_finished():
