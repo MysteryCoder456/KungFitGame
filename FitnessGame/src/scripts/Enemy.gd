@@ -20,8 +20,8 @@ export var attack_damage_max: float
 var velocity = Vector2.ZERO
 var direction = Direction.DOWN
 var state = State.RUNNING
-var pathfinding_threshold = 16
-var target: KungFuMan
+var pathfinding_threshold = 12
+var target: Node2D
 var nav: Navigation2D
 var path = []
 
@@ -29,7 +29,7 @@ onready var animated_sprite = $AnimatedSprite
 onready var attack_timer = $AttackTimer
 
 
-func init(_target: KungFuMan, _nav: Navigation2D):
+func init(_target, _nav: Navigation2D):
 	target = _target
 	nav = _nav
 

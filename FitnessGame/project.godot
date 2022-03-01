@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "KungFuMan",
 "language": "GDScript",
 "path": "res://src/scripts/KungFuMan.gd"
+}, {
+"base": "Control",
+"class": "PlayerHUD",
+"language": "GDScript",
+"path": "res://src/scripts/HUD.gd"
 } ]
 _global_script_class_icons={
 "Enemy": "",
-"KungFuMan": ""
+"KungFuMan": "",
+"PlayerHUD": ""
 }
 
 [application]

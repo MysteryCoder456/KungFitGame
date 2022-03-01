@@ -70,6 +70,12 @@ shape = SubResource( 5 )
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource( 4 )]
 
+[node name="AttackTimer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.8
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="body_entered" from="UpEnemyDetector" to="." method="_on_UpEnemyDetector_body_entered"]
 [connection signal="body_exited" from="UpEnemyDetector" to="." method="_on_UpEnemyDetector_body_exited"]
 [connection signal="body_entered" from="DownEnemyDetector" to="." method="_on_DownEnemyDetector_body_entered"]

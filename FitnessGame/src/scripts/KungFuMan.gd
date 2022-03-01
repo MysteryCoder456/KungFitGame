@@ -32,15 +32,17 @@ var enemies_on_left: Array = []
 onready var actual_max_health = raw_max_health * health_multiplier
 onready var health = actual_max_health
 
-onready var animated_sprite = $AnimatedSprite
-onready var hud = $CanvasLayer/HUD
+onready var animated_sprite: AnimatedSprite = $AnimatedSprite
+onready var hud: PlayerHUD = $CanvasLayer/HUD
+onready var attack_timer: Timer = $AttackTimer
 
 
 func _input(event: InputEvent):
-	if event.is_action_pressed("stick_attack"):
-		stick_attack()
-	elif event.is_action_pressed("kick_attack"):
-		kick_attack()
+	if attack_timer.is_stopped():
+		if event.is_action_pressed("stick_attack"):
+			stick_attack()
+		elif event.is_action_pressed("kick_attack"):
+			kick_attack()
 
 
 func _physics_process(delta: float):
@@ -71,6 +73,12 @@ func _physics_process(delta: float):
 			animated_sprite.play("running_%s" % dir_str)
 			velocity = move_and_slide(velocity)
 
+		State.STICKING:
+			animated_sprite.play("stick_attack_%s" % dir_str)
+
+		State.KICKING:
+			animated_sprite.play("kick_attack_%s" % dir_str)
+
 
 func get_movement_vel() -> Vector2:
 	var new_velocity = Vector2.ZERO
@@ -97,11 +105,13 @@ func damage(damage_amount: float):
 func stick_attack():
 	# TODO
 	state = State.STICKING
+	attack_timer.start()
 
 
 func kick_attack():
 	# TODO
 	state = State.KICKING
+	attack_timer.start()
 
 
 func _on_UpEnemyDetector_body_entered(body: Enemy):
@@ -130,3 +140,8 @@ func _on_RightEnemyDetector_body_entered(body: Enemy):
 
 func _on_RightEnemyDetector_body_exited(body: Enemy):
 	enemies_on_right.erase(body)
+
+
+func _on_AnimatedSprite_animation_finished():
+	if state == State.STICKING or State.KICKING:
+		state = State.IDLE
