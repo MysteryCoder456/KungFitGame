@@ -21,10 +21,12 @@ export var speed: float
 # Base values to modify with multiplier upgrades
 export var raw_max_health: float
 export var raw_strength: float
+export var raw_regeneration_rate: float
 
 # TODO: Make these upgrades later
 export var health_multiplier: float
 export var strength_multiplier: float
+export var regeneration_multiplier: float
 
 var velocity = Vector2.ZERO
 var direction = Direction.DOWN
@@ -35,6 +37,7 @@ onready var actual_max_health = raw_max_health * health_multiplier
 onready var health = actual_max_health
 
 onready var actual_strength = raw_strength * strength_multiplier
+onready var actual_regen_rate = raw_regeneration_rate * regeneration_multiplier
 
 onready var animated_sprite: AnimatedSprite = $AnimatedSprite
 onready var hud: PlayerHUD = $CanvasLayer/HUD
@@ -50,8 +53,8 @@ func _input(event: InputEvent):
 
 
 func _physics_process(delta: float):
+	heal(actual_regen_rate * delta)
 	velocity = get_movement_vel()
-
 	var dir_str = DIRECTION_STRINGS[direction]
 
 	match state:
@@ -98,6 +101,11 @@ func get_movement_vel() -> Vector2:
 
 	new_velocity *= speed
 	return new_velocity
+
+
+func heal(amount: float):
+	damage(-amount)
+	health = min(health, actual_max_health)
 
 
 func damage(damage_amount: float):
