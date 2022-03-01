@@ -17,6 +17,38 @@
 [ext_resource path="res://assets/kung_fu_man/kick_attack/kick_attack_right.png" type="Texture" id=15]
 [ext_resource path="res://assets/kung_fu_man/kick_attack/kick_attack_down.png" type="Texture" id=16]
 
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 7 )
+region = Rect2( 16, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 7 )
+region = Rect2( 32, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 7 )
+region = Rect2( 48, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 8 )
+region = Rect2( 16, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 8 )
+region = Rect2( 32, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 8 )
+region = Rect2( 48, 0, 16, 24 )
+
 [sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 24, 24 )
@@ -161,38 +193,6 @@ region = Rect2( 32, 0, 16, 24 )
 atlas = ExtResource( 3 )
 region = Rect2( 48, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 7 )
-region = Rect2( 16, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 7 )
-region = Rect2( 32, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 7 )
-region = Rect2( 48, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=30]
-atlas = ExtResource( 8 )
-region = Rect2( 16, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 8 )
-region = Rect2( 32, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=32]
-atlas = ExtResource( 8 )
-region = Rect2( 48, 0, 16, 24 )
-
 [sub_resource type="AtlasTexture" id=45]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 0, 24, 24 )
@@ -211,6 +211,16 @@ region = Rect2( 72, 0, 24, 24 )
 
 [resource]
 animations = [ {
+"frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
+"loop": true,
+"name": "running_up",
+"speed": 7.5
+}, {
+"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
+"loop": true,
+"name": "running_down",
+"speed": 7.5
+}, {
 "frames": [ ExtResource( 16 ) ],
 "loop": false,
 "name": "kick_attack_down",
@@ -275,16 +285,6 @@ animations = [ {
 "loop": true,
 "name": "idle_right",
 "speed": 5.0
-}, {
-"frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
-"loop": true,
-"name": "running_up",
-"speed": 7.5
-}, {
-"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
-"loop": true,
-"name": "running_down",
-"speed": 7.5
 }, {
 "frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
 "loop": false,

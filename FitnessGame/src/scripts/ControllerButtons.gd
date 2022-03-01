@@ -1,5 +1,6 @@
 extends Node2D
 
+
 func _ready():
 	visible = OS.get_name() in ["iOS", "Android", "UWP"]
 
