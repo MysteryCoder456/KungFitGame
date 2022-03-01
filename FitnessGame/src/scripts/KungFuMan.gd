@@ -150,7 +150,7 @@ func kick_attack():
 	for enemy in enemies[direction]:
 		# Kick does twice the damage as stick but leaves
 		# the player vulnerable to attacks for longer
-		enemy.damage(actual_strength * 2, kb_dir, 2)
+		enemy.damage(actual_strength * 2, kb_dir, 1.5)
 
 	state = State.KICKING
 	attack_timer.start()

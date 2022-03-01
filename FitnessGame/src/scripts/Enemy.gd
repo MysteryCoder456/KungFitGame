@@ -11,7 +11,8 @@ enum Direction {
 enum State {
 	RUNNING,
 	ATTACKING,
-	STUNNED
+	STUNNED,
+	DYING
 }
 
 export var speed: float
@@ -33,6 +34,7 @@ onready var health = starting_health
 onready var animated_sprite: AnimatedSprite = $AnimatedSprite
 onready var attack_timer: Timer = $AttackTimer
 onready var stun_timer: Timer = $StunTimer
+onready var death_timer: Timer = $DeathTimer
 
 
 func init(_target, _nav: Navigation2D):
@@ -79,6 +81,11 @@ func _physics_process(delta: float):
 			velocity = move_and_slide(velocity)
 			animated_sprite.play("stun")
 
+		State.DYING:
+			velocity *= 0.968
+			velocity = move_and_slide(velocity)
+			animated_sprite.play("death")
+
 
 func get_movement_vel() -> Vector2:
 	if path.size() > 0:
@@ -103,14 +110,13 @@ func do_damage_to_target():
 
 func damage(damage_amount: float, knockback_direction: Vector2, knockback_multiplier: float):
 	health -= damage_amount
+	velocity += knockback_direction.normalized() * knockback_speed * knockback_multiplier
+
 	if health <= 0:
-		# TODO: Make a death animation
-		print("ded")
-		get_parent().remove_child(self)
-		queue_free()
+		state = State.DYING
+		death_timer.start()
 	else:
 		state = State.STUNNED
-		velocity += knockback_direction.normalized() * knockback_speed * knockback_multiplier
 		stun_timer.start()
 
 
@@ -122,3 +128,9 @@ func _on_AttackTimer_timeout():
 func _on_StunTimer_timeout():
 	if state == State.STUNNED:
 		state = State.RUNNING
+
+
+func _on_DeathTimer_timeout():
+	if state == State.DYING:
+		get_parent().remove_child(self)
+		queue_free()

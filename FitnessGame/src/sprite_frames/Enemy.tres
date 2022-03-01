@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=21 format=2]
+[gd_resource type="SpriteFrames" load_steps=22 format=2]
 
 [ext_resource path="res://assets/enemy/running/running_up.png" type="Texture" id=1]
 [ext_resource path="res://assets/enemy/running/running_horizontal.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/enemy/attacking/attacking_0.png" type="Texture" id=6]
 [ext_resource path="res://assets/enemy/attacking/attacking_3.png" type="Texture" id=7]
 [ext_resource path="res://assets/enemy/stun/stun.png" type="Texture" id=8]
+[ext_resource path="res://assets/enemy/death/death.png" type="Texture" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -82,5 +83,10 @@ animations = [ {
 "frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "running_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "death",
 "speed": 5.0
 } ]
