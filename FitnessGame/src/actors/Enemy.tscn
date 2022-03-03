@@ -4,7 +4,7 @@
 [ext_resource path="res://src/scripts/Enemy.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 6, 11 )
+extents = Vector2( 6, 6.5 )
 
 [node name="Enemy" type="KinematicBody2D" groups=["Enemy"]]
 position = Vector2( 0, -10 )
@@ -23,6 +23,7 @@ frames = ExtResource( 1 )
 animation = "running_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 4.5 )
 shape = SubResource( 14 )
 
 [node name="AttackTimer" type="Timer" parent="."]
