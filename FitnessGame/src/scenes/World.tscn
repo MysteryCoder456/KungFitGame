@@ -24,8 +24,10 @@ tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 cell_tile_origin = 1
 cell_y_sort = true
+collision_layer = 4
+collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 589829, 5, 0, 589840, 3, 0, 655379, 3, 0 )
+tile_data = PoolIntArray( -720836, 3, 0, 589829, 5, 0, 589840, 3, 0, 655379, 3, 0 )
 
 [node name="KungFuMan" parent="Entities" instance=ExtResource( 1 )]
 
