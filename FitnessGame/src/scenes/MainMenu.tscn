@@ -1,8 +1,36 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/tile_sets/World.tres" type="TileSet" id=1]
 [ext_resource path="res://src/scripts/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://src/themes/MainMenu.tres" type="Theme" id=3]
+[ext_resource path="res://src/animations/FadeOut.tres" type="Animation" id=4]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FadeRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -31,10 +59,6 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 131123, 5, 0, 196650, 8, 0, 196663, 10, 0, 262184, 6, 0, 262185, 6, 0, 262190, 6, 0, 262191, 6, 0, 262198, 6, 0, 262203, 6, 0, 327688, 3, 0, 327720, 6, 0, 327721, 6, 0, 327726, 6, 0, 327727, 6, 0, 327734, 6, 0, 327739, 6, 0, 393231, 5, 0, 393284, 3, 0, 524331, 5, 0, 524355, 6, 0, 524356, 6, 0, 524357, 6, 0, 589880, 5, 0, 655399, 7, 0, 655410, 9, 0, 720933, 3, 0, 720939, 3, 0, 720944, 11, 0, 720949, 12, 0, 720963, 6, 0, 720964, 6, 0, 720965, 6, 0, 786500, 3, 0 )
-
-[node name="ScrollTimer" type="Timer" parent="."]
-wait_time = 90.0
-autostart = true
 
 [node name="V" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -81,3 +105,24 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 0, 64 )
 text = "Recharge"
+
+[node name="FadeRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollTimer" type="Timer" parent="."]
+wait_time = 90.0
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/Fade Out" = ExtResource( 4 )
+anims/RESET = SubResource( 2 )
+
+[connection signal="pressed" from="V/Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="V/Buttons/RechargeButton" to="." method="_on_RechargeButton_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
