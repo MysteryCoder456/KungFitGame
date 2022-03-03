@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="FitnessGame"
-run/main_scene="res://src/scenes/World.tscn"
+run/main_scene="res://src/scenes/MainMenu.tscn"
 config/icon="res://assets/icons/ios/appstore1024.png"
 
 [display]
