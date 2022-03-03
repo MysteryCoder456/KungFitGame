@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=7 format=2]
+
+[ext_resource path="res://src/dynamic_fonts/Pixellari_48.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/dynamic_fonts/Pixellari_22.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/ui/menu_buttons/button_bg.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/menu_buttons/button_bg_pressed.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 48, 16 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 48, 16 )
+
+[resource]
+Button/fonts/font = ExtResource( 2 )
+Button/styles/hover = SubResource( 1 )
+Button/styles/normal = SubResource( 1 )
+Button/styles/pressed = SubResource( 2 )
+Label/fonts/font = ExtResource( 1 )

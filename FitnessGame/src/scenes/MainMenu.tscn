@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/tile_sets/World.tres" type="TileSet" id=1]
 [ext_resource path="res://src/scripts/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://src/themes/MainMenu.tres" type="Theme" id=3]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -33,3 +35,49 @@ tile_data = PoolIntArray( 131123, 5, 0, 196650, 8, 0, 196663, 10, 0, 262184, 6, 
 [node name="ScrollTimer" type="Timer" parent="."]
 wait_time = 90.0
 autostart = true
+
+[node name="V" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -87.0
+margin_top = 12.0
+margin_right = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="V"]
+margin_right = 186.0
+margin_bottom = 264.0
+grow_horizontal = 2
+size_flags_vertical = 3
+text = "Kung Fit!"
+align = 1
+
+[node name="Buttons" type="VBoxContainer" parent="V"]
+margin_top = 268.0
+margin_right = 186.0
+margin_bottom = 532.0
+grow_vertical = 0
+size_flags_vertical = 3
+
+[node name="PlayButton" type="Button" parent="V/Buttons"]
+margin_right = 186.0
+margin_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 0, 64 )
+text = "Play"
+
+[node name="RechargeButton" type="Button" parent="V/Buttons"]
+margin_top = 68.0
+margin_right = 186.0
+margin_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 0, 64 )
+text = "Recharge"
