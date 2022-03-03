@@ -6,28 +6,52 @@ func _ready():
 
 
 func _on_UpButton_pressed():
-	Input.action_press("move_up")
+	var e = InputEventAction.new()
+	e.action = "move_up"
+	e.pressed = true
+	Input.parse_input_event(e)
 
 func _on_UpButton_released():
-	Input.action_release("move_up")
+	var e = InputEventAction.new()
+	e.action = "move_up"
+	e.pressed = false
+	Input.parse_input_event(e)
 
 
 func _on_DownButton_pressed():
-	Input.action_press("move_down")
+	var e = InputEventAction.new()
+	e.action = "move_down"
+	e.pressed = true
+	Input.parse_input_event(e)
 
 func _on_DownButton_released():
-	Input.action_release("move_down")
+	var e = InputEventAction.new()
+	e.action = "move_down"
+	e.pressed = false
+	Input.parse_input_event(e)
 
 
 func _on_LeftButton_pressed():
-	Input.action_press("move_left")
+	var e = InputEventAction.new()
+	e.action = "move_left"
+	e.pressed = true
+	Input.parse_input_event(e)
 
 func _on_LeftButton_released():
-	Input.action_release("move_left")
+	var e = InputEventAction.new()
+	e.action = "move_left"
+	e.pressed = false
+	Input.parse_input_event(e)
 
 
 func _on_RightButton_pressed():
-	Input.action_press("move_right")
+	var e = InputEventAction.new()
+	e.action = "move_right"
+	e.pressed = true
+	Input.parse_input_event(e)
 
 func _on_RightButton_released():
-	Input.action_release("move_right")
+	var e = InputEventAction.new()
+	e.action = "move_right"
+	e.pressed = false
+	Input.parse_input_event(e)

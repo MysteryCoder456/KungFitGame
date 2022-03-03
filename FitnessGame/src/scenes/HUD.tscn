@@ -24,16 +24,16 @@ __meta__ = {
 
 [node name="TopBar" type="HBoxContainer" parent="."]
 anchor_right = 1.0
-margin_left = 6.0
-margin_top = 6.0
-margin_right = -6.0
+margin_left = 32.0
+margin_top = 16.0
+margin_right = -32.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HealthBar" type="ProgressBar" parent="TopBar"]
-margin_right = 504.0
+margin_right = 478.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 0, 30 )
 size_flags_horizontal = 3
@@ -43,9 +43,9 @@ value = 50.0
 percent_visible = false
 
 [node name="WaveLabel" type="Label" parent="TopBar"]
-margin_left = 508.0
+margin_left = 482.0
 margin_top = 3.0
-margin_right = 1012.0
+margin_right = 960.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 theme = SubResource( 3 )
@@ -54,12 +54,12 @@ align = 2
 valign = 1
 
 [node name="MovementButtons" parent="." instance=ExtResource( 1 )]
-position = Vector2( 96, 424 )
-scale = Vector2( 3.5, 3.5 )
+position = Vector2( 144, 424 )
+scale = Vector2( 4.25, 4.25 )
 
 [node name="AttackButtons" parent="." instance=ExtResource( 4 )]
-position = Vector2( 920, 448 )
-scale = Vector2( 3.5, 3.5 )
+position = Vector2( 936, 424 )
+scale = Vector2( 4.25, 4.25 )
 
 [node name="HealthAnimationTimer" type="Timer" parent="."]
 wait_time = 0.3

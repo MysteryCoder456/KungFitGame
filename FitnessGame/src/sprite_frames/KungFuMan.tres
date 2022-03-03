@@ -211,11 +211,6 @@ region = Rect2( 72, 0, 24, 24 )
 
 [resource]
 animations = [ {
-"frames": [ ExtResource( 13 ) ],
-"loop": false,
-"name": "kick_attack_up",
-"speed": 1.5
-}, {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "idle_left",
@@ -230,6 +225,11 @@ animations = [ {
 "loop": true,
 "name": "running_up",
 "speed": 7.5
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": false,
+"name": "kick_attack_up",
+"speed": 1.5
 }, {
 "frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
 "loop": true,
