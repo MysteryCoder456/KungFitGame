@@ -10,6 +10,7 @@ onready var health_anim_values = [health_bar.max_value, health_bar.max_value]
 
 
 func _ready():
+	animation_player.play("RESET")
 	health_bar.value = health_bar.max_value
 
 
