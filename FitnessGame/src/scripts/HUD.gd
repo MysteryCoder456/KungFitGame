@@ -27,7 +27,7 @@ func _process(delta):
 
 func set_wave_number(wave_num: int):
 	wave_label.text = "Wave: %s" % wave_num
-	large_wave_label.text = "Wave: %s" % wave_num
+	large_wave_label.text = "Wave %s" % wave_num
 
 
 func do_wave_animation():
