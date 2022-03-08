@@ -69,25 +69,26 @@ margin_top = 12.0
 margin_right = 87.0
 grow_horizontal = 2
 grow_vertical = 2
+custom_constants/separation = 20
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="V"]
+margin_top = 166.0
 margin_right = 186.0
-margin_bottom = 264.0
+margin_bottom = 214.0
 grow_horizontal = 2
-size_flags_vertical = 3
+size_flags_vertical = 1
 text = "Kung Fit!"
 align = 1
 
 [node name="Buttons" type="VBoxContainer" parent="V"]
-margin_top = 268.0
+margin_top = 234.0
 margin_right = 186.0
-margin_bottom = 532.0
+margin_bottom = 366.0
 grow_vertical = 0
-size_flags_vertical = 3
 
 [node name="PlayButton" type="Button" parent="V/Buttons"]
 margin_right = 186.0

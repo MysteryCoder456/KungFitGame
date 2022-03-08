@@ -32,7 +32,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="FitnessGame"
+config/name="Kung Fit!"
+config/description="Fighter Game where you have to work out IRL to play it."
 run/main_scene="res://src/scenes/MainMenu.tscn"
 config/icon="res://assets/icons/ios/appstore1024.png"
 
