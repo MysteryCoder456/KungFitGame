@@ -8,16 +8,16 @@
 extents = Vector2( 7, 6 )
 
 [sub_resource type="SegmentShape2D" id=3]
-b = Vector2( 0, -18 )
+b = Vector2( 0, -20 )
 
 [sub_resource type="SegmentShape2D" id=2]
-b = Vector2( 0, 18 )
+b = Vector2( 0, 20 )
 
 [sub_resource type="SegmentShape2D" id=4]
-b = Vector2( -18, 0 )
+b = Vector2( -20, 0 )
 
 [sub_resource type="SegmentShape2D" id=5]
-b = Vector2( 18, 0 )
+b = Vector2( 20, 0 )
 
 [node name="KungFuMan" type="KinematicBody2D"]
 position = Vector2( 0, -11 )
