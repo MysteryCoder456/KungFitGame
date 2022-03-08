@@ -7,7 +7,6 @@ var wave = 0;
 onready var nav: Navigation2D = $Navigation2D
 onready var entities: YSort = $Entities
 onready var player: KungFuMan = $Entities/KungFuMan
-onready var enemy_spawn: Position2D = $EnemySpawnPoint
 
 
 func _ready():
@@ -25,13 +24,14 @@ func spawn_enemies():
 		var new_enemy = ENEMY_SCENE.instance()
 		new_enemy.init(player, nav)
 		entities.add_child(new_enemy)
-		new_enemy.global_position = enemy_spawn.global_position + offset
+		new_enemy.global_position = player.global_position + offset
 		angle += angle_step
 
 
 func next_wave():
 	wave += 1
 	get_tree().call_group("HUD", "set_wave_number", wave)
+	get_tree().call_group("HUD", "do_wave_animation")
 	spawn_enemies()
 
 

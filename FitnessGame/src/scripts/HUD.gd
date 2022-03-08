@@ -3,7 +3,9 @@ extends Control
 
 onready var health_bar: ProgressBar = $TopBar/HealthBar
 onready var wave_label: Label = $TopBar/WaveLabel
+onready var large_wave_label: Label = $LargeWaveLabel
 onready var health_anim_timer: Timer = $HealthAnimationTimer
+onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var health_anim_values = [health_bar.max_value, health_bar.max_value]
 
 
@@ -24,6 +26,11 @@ func _process(delta):
 
 func set_wave_number(wave_num: int):
 	wave_label.text = "Wave: %s" % wave_num
+	large_wave_label.text = "Wave: %s" % wave_num
+
+
+func do_wave_animation():
+	animation_player.play("New Wave Animation")
 
 
 func set_health_bar_value(value: float):
