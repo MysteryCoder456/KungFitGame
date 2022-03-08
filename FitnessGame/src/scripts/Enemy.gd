@@ -78,12 +78,12 @@ func _physics_process(delta: float):
 
 		State.STUNNED:
 			velocity *= 0.968
-			velocity = move_and_slide(velocity)
+			global_position += velocity * delta
 			animated_sprite.play("stun")
 
 		State.DYING:
 			velocity *= 0.968
-			velocity = move_and_slide(velocity)
+			global_position += velocity * delta
 			animated_sprite.play("death")
 
 

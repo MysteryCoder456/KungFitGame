@@ -31,8 +31,15 @@ tile_data = PoolIntArray( -720836, 3, 0, 589829, 5, 0, 589840, 3, 0, 655379, 3, 
 
 [node name="KungFuMan" parent="Entities" instance=ExtResource( 1 )]
 
+[node name="EnemySpawnPoint" type="Position2D" parent="."]
+
 [node name="NavUpdateTimer" type="Timer" parent="."]
 wait_time = 0.4
 autostart = true
 
+[node name="WaveUpdateTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="timeout" from="NavUpdateTimer" to="." method="_on_NavUpdateTimer_timeout"]
+[connection signal="timeout" from="WaveUpdateTimer" to="." method="_on_WaveUpdateTimer_timeout"]
