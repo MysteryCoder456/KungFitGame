@@ -24,9 +24,9 @@ export var raw_strength: float
 export var raw_regeneration_rate: float
 
 # TODO: Make these upgrades later
-export var health_multiplier: float
-export var strength_multiplier: float
-export var regeneration_multiplier: float
+var health_multiplier: float = GameData.health_multiplier
+var strength_multiplier: float = GameData.strength_multiplier
+var regeneration_multiplier: float = 1.0  # for now
 
 var velocity = Vector2.ZERO
 var direction = Direction.DOWN

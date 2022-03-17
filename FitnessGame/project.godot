@@ -37,6 +37,10 @@ config/description="Fighter Game where you have to work out IRL to play it."
 run/main_scene="res://src/scenes/MainMenu.tscn"
 config/icon="res://assets/icons/ios/appstore1024.png"
 
+[autoload]
+
+GameData="*res://src/scripts/GameData.gd"
+
 [display]
 
 window/size/height=544
