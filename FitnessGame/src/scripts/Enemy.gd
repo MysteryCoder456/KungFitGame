@@ -24,7 +24,7 @@ export var starting_health: float
 var velocity = Vector2.ZERO
 var direction = Direction.DOWN
 var state = State.RUNNING
-var pathfinding_threshold = 12
+var pathfinding_threshold = 16
 var target: Node2D
 var nav: Navigation2D
 var path = []
