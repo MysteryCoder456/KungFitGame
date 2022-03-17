@@ -2,8 +2,9 @@ class_name PlayerHUD
 extends Control
 
 onready var health_bar: ProgressBar = $TopBar/HealthBar
-onready var wave_label: Label = $TopBar/WaveLabel
+onready var wave_label: Label = $TopBar/LabelsV/WaveLabel
 onready var large_wave_label: Label = $LargeWaveLabel
+onready var energy_label: Label = $TopBar/LabelsV/H/EnergyLabel
 onready var health_anim_timer: Timer = $HealthAnimationTimer
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var health_anim_values = [health_bar.max_value, health_bar.max_value]
@@ -15,6 +16,7 @@ func _ready():
 
 
 func _process(delta):
+	energy_label.text = str(GameData.energy)
 	var time_left = health_anim_timer.time_left
 
 	if time_left:

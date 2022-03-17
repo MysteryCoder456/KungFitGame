@@ -17,6 +17,7 @@ enum State {
 }
 
 export var speed: float
+export var energy_consumption: float
 
 # Base values to modify with multiplier upgrades
 export var raw_max_health: float
@@ -132,6 +133,7 @@ func stick_attack():
 
 	state = State.STICKING
 	attack_timer.start()
+	GameData.energy -= energy_consumption
 
 
 func kick_attack():
@@ -154,6 +156,7 @@ func kick_attack():
 
 	state = State.KICKING
 	attack_timer.start()
+	GameData.energy -= energy_consumption * 2
 
 
 func _on_UpEnemyDetector_body_entered(body: Enemy):

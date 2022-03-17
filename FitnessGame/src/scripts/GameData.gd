@@ -16,6 +16,12 @@ func _ready():
 	load_game_data()
 
 
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		save_game_data()
+		get_tree().quit()
+
+
 func load_game_data():
 	var f = File.new()
 	
