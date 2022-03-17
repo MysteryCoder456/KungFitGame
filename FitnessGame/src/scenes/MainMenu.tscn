@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/tile_sets/World.tres" type="TileSet" id=1]
 [ext_resource path="res://src/scripts/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://src/themes/MainMenu.tres" type="Theme" id=3]
 [ext_resource path="res://src/animations/FadeOut.tres" type="Animation" id=4]
+[ext_resource path="res://src/dynamic_fonts/Pixellari_22.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/ui/energy_icon/energy_icon.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -60,12 +62,38 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 131123, 5, 0, 196650, 8, 0, 196663, 10, 0, 262184, 6, 0, 262185, 6, 0, 262190, 6, 0, 262191, 6, 0, 262198, 6, 0, 262203, 6, 0, 327688, 3, 0, 327720, 6, 0, 327721, 6, 0, 327726, 6, 0, 327727, 6, 0, 327734, 6, 0, 327739, 6, 0, 393231, 5, 0, 393284, 3, 0, 524331, 5, 0, 524355, 6, 0, 524356, 6, 0, 524357, 6, 0, 589880, 5, 0, 655399, 7, 0, 655410, 9, 0, 720933, 3, 0, 720939, 3, 0, 720944, 11, 0, 720949, 12, 0, 720963, 6, 0, 720964, 6, 0, 720965, 6, 0, 786500, 3, 0 )
 
+[node name="H" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+margin_top = 10.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="H"]
+margin_left = 478.0
+margin_right = 508.0
+margin_bottom = 30.0
+grow_horizontal = 0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="EnergyLabel" type="Label" parent="H"]
+margin_left = 512.0
+margin_top = 3.0
+margin_right = 545.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 5 )
+text = "999"
+align = 2
+valign = 1
+
 [node name="V" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -87.0
-margin_top = 12.0
 margin_right = 87.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -76,18 +104,18 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="V"]
-margin_top = 166.0
+margin_top = 172.0
 margin_right = 186.0
-margin_bottom = 214.0
+margin_bottom = 220.0
 grow_horizontal = 2
 size_flags_vertical = 1
 text = "Kung Fit!"
 align = 1
 
 [node name="Buttons" type="VBoxContainer" parent="V"]
-margin_top = 234.0
+margin_top = 240.0
 margin_right = 186.0
-margin_bottom = 366.0
+margin_bottom = 372.0
 grow_vertical = 0
 
 [node name="PlayButton" type="Button" parent="V/Buttons"]

@@ -5,6 +5,7 @@ const WORLD_SCENE = preload("res://src/scenes/World.tscn")
 export var scroll_start_position: Vector2
 export var scroll_end_position: Vector2
 
+onready var energy_label: Label = $H/EnergyLabel
 onready var background: Node2D = $BackgroundTilemaps
 onready var scroll_timer: Timer = $ScrollTimer
 onready var anim_player: AnimationPlayer = $AnimationPlayer
@@ -13,6 +14,7 @@ var next_scene: PackedScene
 
 
 func _ready():
+	energy_label.text = str(GameData.energy)
 	anim_player.play("RESET")
 
 
