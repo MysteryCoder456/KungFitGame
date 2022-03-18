@@ -6,15 +6,16 @@
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 6, 6.5 )
 
-[node name="Enemy" type="KinematicBody2D" groups=["Enemy"]]
+[node name="Enemy" type="KinematicBody2D" groups=["Actor", "Enemy"]]
+pause_mode = 1
 position = Vector2( 0, -10 )
 collision_layer = 2
 collision_mask = 6
 script = ExtResource( 2 )
 speed = 35.0
 knockback_speed = 60.0
-attack_damage_min = 5.0
-attack_damage_max = 15.0
+attack_damage_min = 3.5
+attack_damage_max = 13.5
 starting_health = 100.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

@@ -19,7 +19,8 @@ extents = Vector2( 10, 5 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 10, 5 )
 
-[node name="KungFuMan" type="KinematicBody2D"]
+[node name="KungFuMan" type="KinematicBody2D" groups=["Actor"]]
+pause_mode = 1
 position = Vector2( 0, -11 )
 collision_mask = 4
 script = ExtResource( 2 )

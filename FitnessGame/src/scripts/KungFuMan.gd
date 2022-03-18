@@ -1,6 +1,8 @@
 class_name KungFuMan
 extends KinematicBody2D
 
+signal death
+
 const DIRECTION_STRINGS = ["up", "down", "left", "right"]
 enum Direction {
 	UP = 0
@@ -113,6 +115,10 @@ func damage(damage_amount: float):
 	health -= damage_amount
 	var bar_value = lerp(0, hud.health_bar.max_value, health / actual_max_health)
 	hud.set_health_bar_value(bar_value)
+	
+	if health <= 0:
+		hud.game_over()
+		emit_signal("death")
 
 
 func stick_attack():
@@ -159,6 +165,11 @@ func kick_attack():
 	GameData.energy -= energy_consumption * 2
 
 
+func _on_AnimatedSprite_animation_finished():
+	if state == State.STICKING or State.KICKING:
+		state = State.IDLE
+
+
 func _on_UpEnemyDetector_body_entered(body: Enemy):
 	enemies[Direction.UP].append(body)
 
@@ -185,8 +196,3 @@ func _on_RightEnemyDetector_body_entered(body: Enemy):
 
 func _on_RightEnemyDetector_body_exited(body: Enemy):
 	enemies[Direction.RIGHT].erase(body)
-
-
-func _on_AnimatedSprite_animation_finished():
-	if state == State.STICKING or State.KICKING:
-		state = State.IDLE

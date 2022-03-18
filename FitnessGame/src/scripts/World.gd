@@ -46,3 +46,10 @@ func _on_WaveUpdateTimer_timeout():
 
 func _on_GameDataSaveTimer_timeout():
 	GameData.save_game_data()
+
+
+func _on_KungFuMan_death():
+	GameData.save_game_data()
+	get_tree().paused = true
+	yield(get_tree().create_timer(5), "timeout")
+	get_tree().change_scene("res://src/scenes/MainMenu.tscn")

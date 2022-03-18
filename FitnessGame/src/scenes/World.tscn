@@ -5,6 +5,7 @@
 [ext_resource path="res://src/scripts/World.gd" type="Script" id=4]
 
 [node name="World" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 4 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
@@ -43,6 +44,7 @@ autostart = true
 wait_time = 15.0
 autostart = true
 
+[connection signal="death" from="Entities/KungFuMan" to="." method="_on_KungFuMan_death"]
 [connection signal="timeout" from="NavUpdateTimer" to="." method="_on_NavUpdateTimer_timeout"]
 [connection signal="timeout" from="WaveUpdateTimer" to="." method="_on_WaveUpdateTimer_timeout"]
 [connection signal="timeout" from="GameDataSaveTimer" to="." method="_on_GameDataSaveTimer_timeout"]
