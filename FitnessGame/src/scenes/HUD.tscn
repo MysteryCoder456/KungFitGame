@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/scenes/MovementButtons.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scripts/HUD.gd" type="Script" id=2]
 [ext_resource path="res://src/dynamic_fonts/Pixellari_22.tres" type="DynamicFont" id=3]
 [ext_resource path="res://src/scenes/AttackButtons.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/themes/MainMenu.tres" type="Theme" id=5]
-[ext_resource path="res://src/animations/NewWaveAnimation.tres" type="Animation" id=6]
 [ext_resource path="res://assets/ui/energy_icon/energy_icon.png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -13,41 +12,6 @@ bg_color = Color( 0.137255, 0.839216, 0.2, 1 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.901961, 0.215686, 0.215686, 1 )
-
-[sub_resource type="Animation" id=4]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("LargeWaveLabel:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("LargeWaveLabel:rect_position:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( -400, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("LargeWaveLabel:rect_position:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 248, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
 
 [node name="HUD" type="Control" groups=["HUD"]]
 anchor_right = 1.0
@@ -129,10 +93,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -400.0
-margin_top = 248.0
-margin_right = -205.0
-margin_bottom = 296.0
+margin_left = -97.5
+margin_top = -24.0
+margin_right = 97.5
+margin_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Wave 999"
@@ -153,7 +117,3 @@ scale = Vector2( 4.25, 4.25 )
 [node name="HealthAnimationTimer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/New Wave Animation" = ExtResource( 6 )
-anims/RESET = SubResource( 4 )

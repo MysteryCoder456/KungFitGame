@@ -42,3 +42,7 @@ func _on_NavUpdateTimer_timeout():
 func _on_WaveUpdateTimer_timeout():
 	if not get_tree().get_nodes_in_group("Enemy"):
 		next_wave()
+
+
+func _on_GameDataSaveTimer_timeout():
+	GameData.save_game_data()

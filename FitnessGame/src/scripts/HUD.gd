@@ -6,12 +6,11 @@ onready var wave_label: Label = $TopBar/LabelsV/WaveLabel
 onready var large_wave_label: Label = $LargeWaveLabel
 onready var energy_label: Label = $TopBar/LabelsV/H/EnergyLabel
 onready var health_anim_timer: Timer = $HealthAnimationTimer
-onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var health_anim_values = [health_bar.max_value, health_bar.max_value]
 
 
 func _ready():
-	animation_player.play("RESET")
+	large_wave_label.visible = false
 	health_bar.value = health_bar.max_value
 
 
@@ -33,7 +32,10 @@ func set_wave_number(wave_num: int):
 
 
 func do_wave_animation():
-	animation_player.play("New Wave Animation")
+	# Add particles and sounds to this
+	large_wave_label.visible = true
+	yield(get_tree().create_timer(3), "timeout")
+	large_wave_label.visible = false
 
 
 func set_health_bar_value(value: float):

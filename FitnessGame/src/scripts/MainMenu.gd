@@ -1,6 +1,7 @@
 extends Control
 
 const WORLD_SCENE = preload("res://src/scenes/World.tscn")
+const RECHARGE_SCENE = preload("res://src/scenes/RechargeMenu.tscn")
 
 export var scroll_start_position: Vector2
 export var scroll_end_position: Vector2
@@ -28,7 +29,8 @@ func _on_PlayButton_pressed():
 
 
 func _on_RechargeButton_pressed():
-	pass # TODO
+	next_scene = RECHARGE_SCENE
+	anim_player.play("Fade Out")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
