@@ -6,6 +6,7 @@ onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 
 func _process(delta):
+	# TODO: Add energy recharge functionality
 	pass
 
 
