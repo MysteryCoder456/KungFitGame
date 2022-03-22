@@ -6,8 +6,19 @@ onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 
 func _process(delta):
-	# TODO: Add energy recharge functionality
-	pass
+	var accel = get_accelerometer()
+	print(accel)
+
+
+func get_accelerometer() -> Vector3:
+	var os_name = OS.get_name()
+	
+	if os_name in ["iOS", "UWP"]:
+		return 9.81 * Input.get_accelerometer()
+	elif os_name == "Android":
+		return Input.get_accelerometer()
+	
+	return Vector3.ZERO
 
 
 func _on_GoBackButton_pressed():
