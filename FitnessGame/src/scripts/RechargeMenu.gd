@@ -14,9 +14,9 @@ func get_accelerometer() -> Vector3:
 	var os_name = OS.get_name()
 	
 	if os_name in ["iOS", "UWP"]:
-		return 9.81 * Input.get_accelerometer()
+		return 9.81 * (Input.get_accelerometer() - Input.get_gravity())
 	elif os_name == "Android":
-		return Input.get_accelerometer()
+		return Input.get_accelerometer() - Input.get_gravity()
 	
 	return Vector3.ZERO
 

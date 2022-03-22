@@ -41,7 +41,7 @@ func load_game_data():
 		energy = GAME_DATA_TEMPLATE["energy"]
 		health_multiplier = GAME_DATA_TEMPLATE["health_multiplier"]
 		strength_multiplier = GAME_DATA_TEMPLATE["strength_multiplier"]
-
+	
 	f.close()
 
 
