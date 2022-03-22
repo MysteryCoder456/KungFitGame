@@ -6,6 +6,7 @@ const ENERGY_GAIN_FACTOR = 0.001
 const MAX_ENERGY_GAIN = 1
 
 onready var anim_player: AnimationPlayer = $AnimationPlayer
+onready var button_audio_player: AudioStreamPlayer = $ButtonAudioPlayer
 
 
 func _process(delta):
@@ -31,6 +32,7 @@ func get_accelerometer() -> Vector3:
 
 func _on_GoBackButton_pressed():
 	GameData.save_game_data()
+	button_audio_player.play()
 	anim_player.play("Fade Out")
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/tile_sets/World.tres" type="TileSet" id=1]
 [ext_resource path="res://src/scripts/MainMenu.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/dynamic_fonts/Pixellari_22.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/ui/energy_icon/energy_icon.png" type="Texture" id=6]
 [ext_resource path="res://src/dynamic_fonts/Pixellari_17.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/ui/sounds/button_click.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -167,6 +168,11 @@ autostart = true
 autoplay = "RESET"
 "anims/Fade Out" = ExtResource( 4 )
 anims/RESET = SubResource( 2 )
+
+[node name="ButtonAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+mix_target = 2
+bus = "SFX"
 
 [connection signal="pressed" from="V/Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="V/Buttons/RechargeButton" to="." method="_on_RechargeButton_pressed"]

@@ -13,6 +13,7 @@ onready var low_energy_label: Label = $V/LowEnergyLabel
 onready var play_button: Button = $V/Buttons/PlayButton
 onready var scroll_timer: Timer = $ScrollTimer
 onready var anim_player: AnimationPlayer = $AnimationPlayer
+onready var button_audio_player: AudioStreamPlayer = $ButtonAudioPlayer
 
 var next_scene: PackedScene
 
@@ -33,11 +34,13 @@ func _process(delta):
 
 func _on_PlayButton_pressed():
 	next_scene = WORLD_SCENE
+	button_audio_player.play()
 	anim_player.play("Fade Out")
 
 
 func _on_RechargeButton_pressed():
 	next_scene = RECHARGE_SCENE
+	button_audio_player.play()
 	anim_player.play("Fade Out")
 
 
