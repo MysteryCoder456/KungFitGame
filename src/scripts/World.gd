@@ -1,6 +1,7 @@
 extends Node2D
 
 const ENEMY_SCENE = preload("res://src/actors/Enemy.tscn")
+const ENEMY_POSITION_LIMIT = Vector2(664, 470)
 
 var wave = 0;
 
@@ -21,10 +22,22 @@ func spawn_enemies():
 
 	for i in range(enemy_count):
 		var offset = Vector2(cos(angle), sin(angle)) * circle_radius
+		var global_pos = player.global_position + offset
+		
+		# Keep position within land area
+		
+		if abs(global_pos.x) > ENEMY_POSITION_LIMIT.x:
+			var x_off_dir = abs(global_pos.x) / global_pos.x
+			global_pos.x -= (abs(global_pos.x) - ENEMY_POSITION_LIMIT.x) * x_off_dir
+		
+		if abs(global_pos.y) > ENEMY_POSITION_LIMIT.y:
+			var y_off_dir = abs(global_pos.y) / global_pos.y
+			global_pos.y -= (abs(global_pos.y) - ENEMY_POSITION_LIMIT.y) * y_off_dir
+		
 		var new_enemy = ENEMY_SCENE.instance()
 		new_enemy.init(player, nav)
 		entities.add_child(new_enemy)
-		new_enemy.global_position = player.global_position + offset
+		new_enemy.global_position = global_pos
 		angle += angle_step
 
 

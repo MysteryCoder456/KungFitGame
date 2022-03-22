@@ -7,6 +7,10 @@
 [node name="World" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -470.0 ],
+"_edit_vertical_guides_": [ -664.0 ]
+}
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
