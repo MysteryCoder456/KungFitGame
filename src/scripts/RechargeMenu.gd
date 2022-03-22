@@ -7,7 +7,8 @@ onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 func _process(delta):
 	var accel = get_accelerometer()
-	print(accel)
+	var accel_mag = accel.length()
+	print(accel_mag)
 
 
 func get_accelerometer() -> Vector3:
