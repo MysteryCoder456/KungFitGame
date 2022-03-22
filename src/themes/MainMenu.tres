@@ -14,7 +14,9 @@ texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 48, 16 )
 
 [resource]
+Button/colors/font_color_disabled = Color( 0.501961, 0.501961, 0.501961, 1 )
 Button/fonts/font = ExtResource( 2 )
+Button/styles/disabled = SubResource( 1 )
 Button/styles/hover = SubResource( 1 )
 Button/styles/normal = SubResource( 1 )
 Button/styles/pressed = SubResource( 2 )

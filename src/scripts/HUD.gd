@@ -17,7 +17,7 @@ func _ready():
 
 
 func _process(delta):
-	energy_label.text = str(round(GameData.energy))
+	energy_label.text = str(max(round(GameData.energy), 0))
 	var time_left = health_anim_timer.time_left
 
 	if time_left:
@@ -46,5 +46,10 @@ func set_health_bar_value(value: float):
 
 
 func game_over():
+	if GameData.energy <= 0:
+		game_over_label.text = "No Energy!"
+	else:
+		game_over_label.text = "Game Over!"
+	
 	large_wave_label.visible = false
 	game_over_label.visible = true

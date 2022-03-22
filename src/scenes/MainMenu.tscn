@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/tile_sets/World.tres" type="TileSet" id=1]
 [ext_resource path="res://src/scripts/MainMenu.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/animations/FadeOut.tres" type="Animation" id=4]
 [ext_resource path="res://src/dynamic_fonts/Pixellari_22.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/ui/energy_icon/energy_icon.png" type="Texture" id=6]
+[ext_resource path="res://src/dynamic_fonts/Pixellari_17.tres" type="DynamicFont" id=7]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -111,6 +112,20 @@ grow_horizontal = 2
 size_flags_vertical = 1
 text = "Kung Fit!"
 align = 1
+
+[node name="LowEnergyLabel" type="Label" parent="V"]
+visible = false
+margin_top = 210.0
+margin_right = 186.0
+margin_bottom = 249.0
+custom_fonts/font = ExtResource( 7 )
+text = "You need at least
+69 energy to play!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Buttons" type="VBoxContainer" parent="V"]
 margin_top = 240.0

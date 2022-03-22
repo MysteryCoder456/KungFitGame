@@ -53,10 +53,18 @@ func _input(event: InputEvent):
 			stick_attack()
 		elif event.is_action_pressed("kick_attack"):
 			kick_attack()
+		
+		if GameData.energy <= 0:
+			hud.game_over()
+			emit_signal("death")
+		
+		GameData.energy = max(GameData.energy, 0)
 
 
 func _physics_process(delta: float):
-	heal(actual_regen_rate * delta)
+	if health < actual_max_health:
+		heal(actual_regen_rate * delta)
+	
 	velocity = get_movement_vel()
 	var dir_str = DIRECTION_STRINGS[direction]
 
