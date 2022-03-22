@@ -1,8 +1,8 @@
 extends Control
 
 const MAIN_MENU_SCENE = "res://src/scenes/MainMenu.tscn"
-const ACCELERATION_THRESHOLD = 7  # m/s^2
-const ENERGY_GAIN_FACTOR = 0.01
+const ACCELERATION_THRESHOLD = 8  # m/s^2
+const ENERGY_GAIN_FACTOR = 0.001
 const MAX_ENERGY_GAIN = 1
 
 onready var anim_player: AnimationPlayer = $AnimationPlayer

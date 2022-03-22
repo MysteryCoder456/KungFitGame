@@ -52,4 +52,5 @@ func _on_KungFuMan_death():
 	GameData.save_game_data()
 	get_tree().paused = true
 	yield(get_tree().create_timer(5), "timeout")
+	get_tree().paused = false
 	get_tree().change_scene("res://src/scenes/MainMenu.tscn")
