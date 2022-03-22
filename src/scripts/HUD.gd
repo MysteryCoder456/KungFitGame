@@ -17,7 +17,7 @@ func _ready():
 
 
 func _process(delta):
-	energy_label.text = str(GameData.energy)
+	energy_label.text = str(round(GameData.energy))
 	var time_left = health_anim_timer.time_left
 
 	if time_left:

@@ -1,6 +1,9 @@
 extends Control
 
 const MAIN_MENU_SCENE = "res://src/scenes/MainMenu.tscn"
+const ACCELERATION_THRESHOLD = 7  # m/s^2
+const ENERGY_GAIN_FACTOR = 0.05
+const MAX_ENERGY_GAIN = 1.5
 
 onready var anim_player: AnimationPlayer = $AnimationPlayer
 
@@ -8,7 +11,11 @@ onready var anim_player: AnimationPlayer = $AnimationPlayer
 func _process(delta):
 	var accel = get_accelerometer()
 	var accel_mag = accel.length()
-	print(accel_mag)
+	
+	if accel_mag > ACCELERATION_THRESHOLD:
+		var energy_gain = min((accel_mag - ACCELERATION_THRESHOLD) * ENERGY_GAIN_FACTOR, MAX_ENERGY_GAIN)
+		GameData.energy += energy_gain
+		print("Gained %s energy" % energy_gain)
 
 
 func get_accelerometer() -> Vector3:
@@ -23,6 +30,7 @@ func get_accelerometer() -> Vector3:
 
 
 func _on_GoBackButton_pressed():
+	GameData.save_game_data()
 	anim_player.play("Fade Out")
 
 

@@ -15,7 +15,7 @@ var next_scene: PackedScene
 
 
 func _ready():
-	energy_label.text = str(GameData.energy)
+	energy_label.text = str(round(GameData.energy))
 	anim_player.play("RESET")
 
 
