@@ -2,7 +2,7 @@ extends Node
 
 const GAME_DATA_PATH = "user://game_data.json"
 const GAME_DATA_TEMPLATE = {
-	"energy": 5000.0,
+	"energy": 500.0,
 	"health_multiplier": 1.0,
 	"strength_multiplier": 1.0
 }
