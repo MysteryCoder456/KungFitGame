@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/actors/KungFuMan.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/tile_sets/World.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/music/game_music.ogg" type="AudioStream" id=3]
 [ext_resource path="res://src/scripts/World.gd" type="Script" id=4]
 
 [node name="World" type="Node2D"]
@@ -47,6 +48,11 @@ autostart = true
 [node name="GameDataSaveTimer" type="Timer" parent="."]
 wait_time = 15.0
 autostart = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+bus = "Music"
 
 [connection signal="death" from="Entities/KungFuMan" to="." method="_on_KungFuMan_death"]
 [connection signal="timeout" from="NavUpdateTimer" to="." method="_on_NavUpdateTimer_timeout"]
