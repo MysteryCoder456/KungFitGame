@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/sprite_frames/Enemy.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://src/scripts/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/game/enemy_hit.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sfx/game/enemy_death.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 6, 6.5 )
@@ -37,6 +39,14 @@ one_shot = true
 
 [node name="DeathTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -18.0
+
+[node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -14.0
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
 [connection signal="timeout" from="StunTimer" to="." method="_on_StunTimer_timeout"]

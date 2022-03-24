@@ -35,6 +35,8 @@ onready var animated_sprite: AnimatedSprite = $AnimatedSprite
 onready var attack_timer: Timer = $AttackTimer
 onready var stun_timer: Timer = $StunTimer
 onready var death_timer: Timer = $DeathTimer
+onready var enemy_hit_sound: AudioStreamPlayer2D = $EnemyHitSound
+onready var enemy_death_sound: AudioStreamPlayer2D = $EnemyDeathSound
 
 
 func init(_target, _nav: Navigation2D):
@@ -114,9 +116,11 @@ func damage(damage_amount: float, knockback_direction: Vector2, knockback_multip
 
 	if health <= 0:
 		state = State.DYING
+		enemy_death_sound.play()
 		death_timer.start()
 	else:
 		state = State.STUNNED
+		enemy_hit_sound.play()
 		stun_timer.start()
 
 
