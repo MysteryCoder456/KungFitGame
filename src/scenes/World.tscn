@@ -50,6 +50,7 @@ wait_time = 15.0
 autostart = true
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 1
 stream = ExtResource( 3 )
 autoplay = true
 bus = "Music"

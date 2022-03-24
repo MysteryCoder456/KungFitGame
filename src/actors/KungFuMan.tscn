@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/sprite_frames/KungFuMan.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://src/scripts/KungFuMan.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/game/player_hit.wav" type="AudioStream" id=3]
 [ext_resource path="res://src/scenes/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sfx/game/game_over.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 6 )
@@ -78,6 +80,20 @@ shape = SubResource( 5 )
 process_mode = 0
 wait_time = 0.8
 one_shot = true
+
+[node name="PlayerHitSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 3 )
+volume_db = -20.0
+mix_target = 2
+bus = "SFX"
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 5 )
+volume_db = 4.0
+mix_target = 2
+bus = "SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="body_entered" from="UpEnemyDetector" to="." method="_on_UpEnemyDetector_body_entered"]

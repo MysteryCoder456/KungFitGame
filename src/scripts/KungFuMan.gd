@@ -45,6 +45,8 @@ onready var actual_regen_rate = raw_regeneration_rate * regeneration_multiplier
 onready var animated_sprite: AnimatedSprite = $AnimatedSprite
 onready var hud: PlayerHUD = $CanvasLayer/HUD
 onready var attack_timer: Timer = $AttackTimer
+onready var player_hit_sound: AudioStreamPlayer = $PlayerHitSound
+onready var game_over_sound: AudioStreamPlayer = $GameOverSound
 
 
 func _input(event: InputEvent):
@@ -55,8 +57,7 @@ func _input(event: InputEvent):
 			kick_attack()
 		
 		if GameData.energy <= 0:
-			hud.game_over()
-			emit_signal("death")
+			game_over()
 		
 		GameData.energy = max(GameData.energy, 0)
 
@@ -114,19 +115,27 @@ func get_movement_vel() -> Vector2:
 	return new_velocity
 
 
+func game_over():
+	hud.game_over()
+	game_over_sound.play()
+	emit_signal("death")
+
+
 func heal(amount: float):
-	damage(-amount)
+	damage(-amount, false)
 	health = min(health, actual_max_health)
 
 
-func damage(damage_amount: float):
+func damage(damage_amount: float, play_sound: bool = true):
 	health -= damage_amount
 	var bar_value = lerp(0, hud.health_bar.max_value, health / actual_max_health)
 	hud.set_health_bar_value(bar_value)
 	
+	if play_sound:
+		player_hit_sound.play()
+	
 	if health <= 0:
-		hud.game_over()
-		emit_signal("death")
+		game_over()
 
 
 func stick_attack():

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/player_hit.wav-faddd3f1b5656bb78ddbcf3533a9f3cc.sample"
+
+[deps]
+
+source_file="res://assets/sfx/game/player_hit.wav"
+dest_files=[ "res://.import/player_hit.wav-faddd3f1b5656bb78ddbcf3533a9f3cc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
