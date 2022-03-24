@@ -1,0 +1,143 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/themes/MainMenu.tres" type="Theme" id=1]
+[ext_resource path="res://src/scenes/ButtonAudioPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/scripts/Credits.gd" type="Script" id=3]
+[ext_resource path="res://src/animations/FadeOut.tres" type="Animation" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FadeRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="V" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -49.5
+margin_right = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/separation = 20
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="V"]
+margin_top = 120.0
+margin_right = 277.0
+margin_bottom = 168.0
+text = "Credits"
+align = 1
+valign = 1
+
+[node name="ChasersGaming" type="LinkButton" parent="V"]
+margin_top = 188.0
+margin_right = 277.0
+margin_bottom = 211.0
+size_flags_horizontal = 3
+text = "ChasersGaming - Art"
+underline = 1
+
+[node name="pixelarchipel" type="LinkButton" parent="V"]
+margin_top = 231.0
+margin_right = 277.0
+margin_bottom = 254.0
+focus_mode = 2
+size_flags_horizontal = 3
+text = "pixelarchipel - Art / Sounds"
+underline = 1
+
+[node name="Kenney" type="LinkButton" parent="V"]
+margin_top = 274.0
+margin_right = 277.0
+margin_bottom = 297.0
+focus_mode = 2
+size_flags_horizontal = 3
+text = "Kenney - Art"
+underline = 1
+
+[node name="zedseven" type="LinkButton" parent="V"]
+margin_top = 317.0
+margin_right = 277.0
+margin_bottom = 340.0
+focus_mode = 2
+size_flags_horizontal = 3
+text = "zedseven - Fonts"
+underline = 1
+
+[node name="H" type="HBoxContainer" parent="V"]
+margin_top = 360.0
+margin_right = 277.0
+margin_bottom = 424.0
+alignment = 1
+
+[node name="GoBackButton" type="Button" parent="V/H"]
+margin_left = 45.0
+margin_right = 231.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 186, 64 )
+text = "Back to Menu"
+
+[node name="FadeRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+"anims/Fade Out" = ExtResource( 4 )
+anims/RESET = SubResource( 1 )
+
+[node name="ButtonAudioPlayer" parent="." instance=ExtResource( 2 )]
+
+[connection signal="pressed" from="V/ChasersGaming" to="." method="_on_ChasersGaming_pressed"]
+[connection signal="pressed" from="V/pixelarchipel" to="." method="_on_pixelarchipel_pressed"]
+[connection signal="pressed" from="V/Kenney" to="." method="_on_Kenney_pressed"]
+[connection signal="pressed" from="V/zedseven" to="." method="_on_zedseven_pressed"]
+[connection signal="pressed" from="V/H/GoBackButton" to="." method="_on_GoBackButton_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

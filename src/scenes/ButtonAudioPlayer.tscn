@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/sfx/menu/button_click.wav" type="AudioStream" id=1]
+
+[node name="ButtonAudioPlayer" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+mix_target = 2
+bus = "SFX"

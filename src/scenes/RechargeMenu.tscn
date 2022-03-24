@@ -5,7 +5,7 @@
 [ext_resource path="res://src/dynamic_fonts/Pixellari_22.tres" type="DynamicFont" id=3]
 [ext_resource path="res://src/scripts/RechargeMenu.gd" type="Script" id=4]
 [ext_resource path="res://src/animations/FadeOut.tres" type="Animation" id=5]
-[ext_resource path="res://assets/sfx/menu/button_click.wav" type="AudioStream" id=6]
+[ext_resource path="res://src/scenes/ButtonAudioPlayer.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "RESET"
@@ -126,10 +126,7 @@ autoplay = "RESET"
 "anims/Fade Out" = ExtResource( 5 )
 anims/RESET = SubResource( 1 )
 
-[node name="ButtonAudioPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-mix_target = 2
-bus = "SFX"
+[node name="ButtonAudioPlayer" parent="." instance=ExtResource( 6 )]
 
 [connection signal="pressed" from="V/H2/GoBackButton" to="." method="_on_GoBackButton_pressed"]
 [connection signal="timeout" from="EnergySaveTimer" to="." method="_on_EnergySaveTimer_timeout"]

@@ -7,7 +7,7 @@
 [ext_resource path="res://src/dynamic_fonts/Pixellari_22.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/ui/energy_icon/energy_icon.png" type="Texture" id=6]
 [ext_resource path="res://src/dynamic_fonts/Pixellari_17.tres" type="DynamicFont" id=7]
-[ext_resource path="res://assets/sfx/menu/button_click.wav" type="AudioStream" id=8]
+[ext_resource path="res://src/scenes/ButtonAudioPlayer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/music/menu_music.ogg" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=2]
@@ -107,9 +107,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="V"]
-margin_top = 172.0
+margin_top = 138.0
 margin_right = 186.0
-margin_bottom = 220.0
+margin_bottom = 186.0
 grow_horizontal = 2
 size_flags_vertical = 1
 text = "Kung Fit!"
@@ -130,9 +130,9 @@ __meta__ = {
 }
 
 [node name="Buttons" type="VBoxContainer" parent="V"]
-margin_top = 240.0
+margin_top = 206.0
 margin_right = 186.0
-margin_bottom = 372.0
+margin_bottom = 406.0
 grow_vertical = 0
 
 [node name="PlayButton" type="Button" parent="V/Buttons"]
@@ -152,6 +152,15 @@ grow_vertical = 2
 rect_min_size = Vector2( 0, 64 )
 text = "Recharge"
 
+[node name="CreditsButton" type="Button" parent="V/Buttons"]
+margin_top = 136.0
+margin_right = 186.0
+margin_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 0, 64 )
+text = "Credits"
+
 [node name="FadeRect" type="ColorRect" parent="."]
 visible = false
 anchor_right = 1.0
@@ -170,10 +179,7 @@ autoplay = "RESET"
 "anims/Fade Out" = ExtResource( 4 )
 anims/RESET = SubResource( 2 )
 
-[node name="ButtonAudioPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
-mix_target = 2
-bus = "SFX"
+[node name="ButtonAudioPlayer" parent="." instance=ExtResource( 8 )]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
@@ -183,4 +189,5 @@ bus = "Music"
 
 [connection signal="pressed" from="V/Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="V/Buttons/RechargeButton" to="." method="_on_RechargeButton_pressed"]
+[connection signal="pressed" from="V/Buttons/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

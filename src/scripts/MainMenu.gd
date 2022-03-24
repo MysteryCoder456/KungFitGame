@@ -2,6 +2,7 @@ extends Control
 
 const WORLD_SCENE = preload("res://src/scenes/World.tscn")
 const RECHARGE_SCENE = preload("res://src/scenes/RechargeMenu.tscn")
+const CREDITS_SCENE = preload("res://src/scenes/Credits.tscn")
 const ENERGY_REQUIREMENT = 100
 
 export var scroll_start_position: Vector2
@@ -40,6 +41,12 @@ func _on_PlayButton_pressed():
 
 func _on_RechargeButton_pressed():
 	next_scene = RECHARGE_SCENE
+	button_audio_player.play()
+	anim_player.play("Fade Out")
+
+
+func _on_CreditsButton_pressed():
+	next_scene = CREDITS_SCENE
 	button_audio_player.play()
 	anim_player.play("Fade Out")
 
