@@ -11,6 +11,7 @@ export var scroll_end_position: Vector2
 
 onready var background: Node2D = $BackgroundTilemaps
 onready var energy_label: Label = $H/EnergyLabel
+onready var coins_label: Label = $H/CoinsLabel
 onready var low_energy_label: Label = $V/LowEnergyLabel
 onready var play_button: Button = $V/Buttons/PlayButton
 onready var scroll_timer: Timer = $ScrollTimer
@@ -22,6 +23,7 @@ var next_scene: PackedScene
 
 func _ready():
 	energy_label.text = str(round(GameData.energy))
+	coins_label.text = str(GameData.coins)
 	
 	play_button.disabled = GameData.energy < ENERGY_REQUIREMENT
 	low_energy_label.visible = GameData.energy < ENERGY_REQUIREMENT

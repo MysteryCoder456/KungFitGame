@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/dynamic_fonts/Pixellari_22.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/themes/MainMenu.tres" type="Theme" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/ui/upgrade_icons/health_icon.png" type="Texture" id=7]
 [ext_resource path="res://src/dynamic_fonts/Pixellari_32.tres" type="DynamicFont" id=8]
 [ext_resource path="res://src/scripts/UpgradeMenu.gd" type="Script" id=9]
+[ext_resource path="res://assets/sfx/menu/upgrade.wav" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "RESET"
@@ -81,7 +82,7 @@ rect_min_size = Vector2( 30, 30 )
 texture = ExtResource( 6 )
 expand = true
 
-[node name="Label" type="Label" parent="V/CoinsHBox"]
+[node name="CoinsLabel" type="Label" parent="V/CoinsHBox"]
 margin_left = 512.0
 margin_top = 3.0
 margin_right = 545.0
@@ -225,10 +226,17 @@ __meta__ = {
 
 [node name="ButtonAudioPlayer" parent="." instance=ExtResource( 4 )]
 
+[node name="UpgradeAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+mix_target = 2
+bus = "SFX"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
 "anims/Fade Out" = ExtResource( 5 )
 anims/RESET = SubResource( 1 )
 
+[connection signal="pressed" from="V/H1/V1/H2/HealthUpgradeButton" to="." method="_on_HealthUpgradeButton_pressed"]
+[connection signal="pressed" from="V/H1/V2/H2/StrengthUpgradeButton" to="." method="_on_StrengthUpgradeButton_pressed"]
 [connection signal="pressed" from="V/H2/GoBackButton" to="." method="_on_GoBackButton_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
