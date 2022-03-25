@@ -2,6 +2,7 @@ extends Node2D
 
 const ENEMY_SCENE = preload("res://src/actors/Enemy.tscn")
 const ENEMY_POSITION_LIMIT = Vector2(664, 470)
+const COIN_REWARD_FACTOR = 1.65
 
 var wave = 0;
 
@@ -42,6 +43,7 @@ func spawn_enemies():
 
 
 func next_wave():
+	GameData.coins += round(wave * COIN_REWARD_FACTOR)
 	wave += 1
 	get_tree().call_group("HUD", "set_wave_number", wave)
 	get_tree().call_group("HUD", "do_wave_animation")
