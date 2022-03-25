@@ -2,6 +2,7 @@ extends Control
 
 const WORLD_SCENE = preload("res://src/scenes/World.tscn")
 const RECHARGE_SCENE = preload("res://src/scenes/RechargeMenu.tscn")
+const UPGRADE_SCENE = preload("res://src/scenes/UpgradeMenu.tscn")
 const CREDITS_SCENE = preload("res://src/scenes/Credits.tscn")
 const ENERGY_REQUIREMENT = 100
 
@@ -41,6 +42,12 @@ func _on_PlayButton_pressed():
 
 func _on_RechargeButton_pressed():
 	next_scene = RECHARGE_SCENE
+	button_audio_player.play()
+	anim_player.play("Fade Out")
+
+
+func _on_UpgradeButton_pressed():
+	next_scene = UPGRADE_SCENE
 	button_audio_player.play()
 	anim_player.play("Fade Out")
 

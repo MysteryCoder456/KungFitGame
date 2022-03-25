@@ -64,52 +64,70 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="V"]
-margin_top = 120.0
+margin_top = 77.0
 margin_right = 277.0
-margin_bottom = 168.0
+margin_bottom = 125.0
 text = "Credits"
 align = 1
 valign = 1
 
 [node name="ChasersGaming" type="LinkButton" parent="V"]
-margin_top = 188.0
+margin_top = 145.0
 margin_right = 277.0
-margin_bottom = 211.0
+margin_bottom = 168.0
 size_flags_horizontal = 3
 text = "ChasersGaming - Art"
 underline = 1
 
 [node name="pixelarchipel" type="LinkButton" parent="V"]
-margin_top = 231.0
+margin_top = 188.0
 margin_right = 277.0
-margin_bottom = 254.0
+margin_bottom = 211.0
 focus_mode = 2
 size_flags_horizontal = 3
 text = "pixelarchipel - Art / Sounds"
 underline = 1
 
 [node name="Kenney" type="LinkButton" parent="V"]
-margin_top = 274.0
+margin_top = 231.0
 margin_right = 277.0
-margin_bottom = 297.0
+margin_bottom = 254.0
 focus_mode = 2
 size_flags_horizontal = 3
 text = "Kenney - Art"
 underline = 1
 
 [node name="zedseven" type="LinkButton" parent="V"]
-margin_top = 317.0
+margin_top = 274.0
 margin_right = 277.0
-margin_bottom = 340.0
+margin_bottom = 297.0
 focus_mode = 2
 size_flags_horizontal = 3
 text = "zedseven - Fonts"
 underline = 1
 
-[node name="H" type="HBoxContainer" parent="V"]
+[node name="Santoniche" type="LinkButton" parent="V"]
+margin_top = 317.0
+margin_right = 277.0
+margin_bottom = 340.0
+focus_mode = 2
+size_flags_horizontal = 3
+text = "Santoniche - Art"
+underline = 1
+
+[node name="BizmasterStudios" type="LinkButton" parent="V"]
 margin_top = 360.0
 margin_right = 277.0
-margin_bottom = 424.0
+margin_bottom = 383.0
+focus_mode = 2
+size_flags_horizontal = 3
+text = "BizmasterStudios - Art"
+underline = 1
+
+[node name="H" type="HBoxContainer" parent="V"]
+margin_top = 403.0
+margin_right = 277.0
+margin_bottom = 467.0
 alignment = 1
 
 [node name="GoBackButton" type="Button" parent="V/H"]
@@ -139,5 +157,7 @@ anims/RESET = SubResource( 1 )
 [connection signal="pressed" from="V/pixelarchipel" to="." method="_on_pixelarchipel_pressed"]
 [connection signal="pressed" from="V/Kenney" to="." method="_on_Kenney_pressed"]
 [connection signal="pressed" from="V/zedseven" to="." method="_on_zedseven_pressed"]
+[connection signal="pressed" from="V/Santoniche" to="." method="_on_zedseven_pressed"]
+[connection signal="pressed" from="V/BizmasterStudios" to="." method="_on_zedseven_pressed"]
 [connection signal="pressed" from="V/H/GoBackButton" to="." method="_on_GoBackButton_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

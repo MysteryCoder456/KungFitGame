@@ -3,11 +3,13 @@ extends Node
 const GAME_DATA_PATH = "user://game_data.json"
 const GAME_DATA_TEMPLATE = {
 	"energy": 500.0,
+	"coins": 100,
 	"health_multiplier": 1.0,
 	"strength_multiplier": 1.0
 }
 
 var energy: float
+var coins: int
 var health_multiplier: float
 var strength_multiplier: float
 
@@ -31,6 +33,7 @@ func load_game_data():
 		var parsed_data = parse_json(raw_data)
 		
 		energy = parsed_data["energy"]
+		coins = parsed_data["coins"]
 		health_multiplier = parsed_data["health_multiplier"]
 		strength_multiplier = parsed_data["strength_multiplier"]
 		
@@ -39,6 +42,7 @@ func load_game_data():
 		f.store_string(to_json(GAME_DATA_TEMPLATE))
 		
 		energy = GAME_DATA_TEMPLATE["energy"]
+		coins = GAME_DATA_TEMPLATE["coins"]
 		health_multiplier = GAME_DATA_TEMPLATE["health_multiplier"]
 		strength_multiplier = GAME_DATA_TEMPLATE["strength_multiplier"]
 	
@@ -51,6 +55,7 @@ func save_game_data():
 	
 	var data = {
 		"energy": energy,
+		"coins": coins,
 		"health_multiplier": health_multiplier,
 		"strength_multiplier": strength_multiplier
 	}

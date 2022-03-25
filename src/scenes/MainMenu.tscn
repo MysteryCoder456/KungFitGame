@@ -107,9 +107,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="V"]
-margin_top = 138.0
+margin_top = 104.0
 margin_right = 186.0
-margin_bottom = 186.0
+margin_bottom = 152.0
 grow_horizontal = 2
 size_flags_vertical = 1
 text = "Kung Fit!"
@@ -130,9 +130,9 @@ __meta__ = {
 }
 
 [node name="Buttons" type="VBoxContainer" parent="V"]
-margin_top = 206.0
+margin_top = 172.0
 margin_right = 186.0
-margin_bottom = 406.0
+margin_bottom = 440.0
 grow_vertical = 0
 
 [node name="PlayButton" type="Button" parent="V/Buttons"]
@@ -152,10 +152,19 @@ grow_vertical = 2
 rect_min_size = Vector2( 0, 64 )
 text = "Recharge"
 
-[node name="CreditsButton" type="Button" parent="V/Buttons"]
+[node name="UpgradeButton" type="Button" parent="V/Buttons"]
 margin_top = 136.0
 margin_right = 186.0
 margin_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 0, 64 )
+text = "Upgrade"
+
+[node name="CreditsButton" type="Button" parent="V/Buttons"]
+margin_top = 204.0
+margin_right = 186.0
+margin_bottom = 268.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 0, 64 )
@@ -189,5 +198,6 @@ bus = "Music"
 
 [connection signal="pressed" from="V/Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="V/Buttons/RechargeButton" to="." method="_on_RechargeButton_pressed"]
+[connection signal="pressed" from="V/Buttons/UpgradeButton" to="." method="_on_UpgradeButton_pressed"]
 [connection signal="pressed" from="V/Buttons/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
