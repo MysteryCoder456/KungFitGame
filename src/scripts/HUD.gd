@@ -5,7 +5,8 @@ onready var health_bar: ProgressBar = $TopBar/HealthBar
 onready var wave_label: Label = $TopBar/LabelsV/WaveLabel
 onready var large_wave_label: Label = $LargeWaveLabel
 onready var game_over_label: Label = $GameOverLabel
-onready var energy_label: Label = $TopBar/LabelsV/H/EnergyLabel
+onready var energy_label: Label = $TopBar/LabelsV/H1/EnergyLabel
+onready var coins_label: Label = $TopBar/LabelsV/H2/CoinsLabel
 onready var health_anim_timer: Timer = $HealthAnimationTimer
 onready var health_anim_values = [health_bar.max_value, health_bar.max_value]
 
@@ -18,6 +19,7 @@ func _ready():
 
 func _process(delta):
 	energy_label.text = str(max(round(GameData.energy), 0))
+	coins_label.text = str(GameData.coins)
 	var time_left = health_anim_timer.time_left
 
 	if time_left:
