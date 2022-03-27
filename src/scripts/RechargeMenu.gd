@@ -1,9 +1,9 @@
 extends Control
 
 const MAIN_MENU_SCENE = "res://src/scenes/MainMenu.tscn"
-const ACCELERATION_THRESHOLD = 8  # m/s^2
+const ACCELERATION_THRESHOLD = 7  # m/s^2
 const ENERGY_GAIN_FACTOR = 0.001
-const MAX_ENERGY_GAIN = 1
+const MAX_ENERGY_GAIN = 1.15
 
 onready var anim_player: AnimationPlayer = $AnimationPlayer
 onready var button_audio_player: AudioStreamPlayer = $ButtonAudioPlayer
@@ -16,7 +16,7 @@ func _process(delta):
 	if accel_mag > ACCELERATION_THRESHOLD:
 		var energy_gain = min((accel_mag - ACCELERATION_THRESHOLD) * ENERGY_GAIN_FACTOR, MAX_ENERGY_GAIN)
 		GameData.energy += energy_gain
-		print("Gained %s energy" % energy_gain)
+#		print("Gained %s energy" % energy_gain)
 
 
 func get_accelerometer() -> Vector3:
@@ -26,8 +26,9 @@ func get_accelerometer() -> Vector3:
 		return 9.81 * (Input.get_accelerometer() - Input.get_gravity())
 	elif os_name == "Android":
 		return Input.get_accelerometer() - Input.get_gravity()
-	
-	return Vector3.ZERO
+	else:
+		# Simulate exercise on platforms that don't have an accelerometer
+		return Vector3.FORWARD * 20
 
 
 func _on_GoBackButton_pressed():
