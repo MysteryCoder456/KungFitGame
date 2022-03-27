@@ -33,7 +33,7 @@ func _ready():
 
 
 func _process(delta):
-	background.global_position = lerp(scroll_end_position, scroll_start_position, scroll_timer.time_left / scroll_timer.wait_time)
+	background.global_position.x = lerp(scroll_end_position.x, scroll_start_position.x, scroll_timer.time_left / scroll_timer.wait_time)
 
 
 func _on_PlayButton_pressed():

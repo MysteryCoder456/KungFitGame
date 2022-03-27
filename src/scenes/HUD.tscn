@@ -21,7 +21,6 @@ anchor_bottom = 1.0
 theme = ExtResource( 5 )
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_horizontal_guides_": [ -38.0 ],
 "_edit_use_anchors_": false
 }
 
@@ -154,12 +153,18 @@ __meta__ = {
 }
 
 [node name="MovementButtons" parent="." instance=ExtResource( 1 )]
-position = Vector2( 144, 424 )
-scale = Vector2( 4.25, 4.25 )
+anchor_left = 0.15
+anchor_top = 0.76
+anchor_right = 0.15
+anchor_bottom = 0.76
+rect_scale = Vector2( 4.25, 4.25 )
 
 [node name="AttackButtons" parent="." instance=ExtResource( 4 )]
-position = Vector2( 936, 424 )
-scale = Vector2( 4.25, 4.25 )
+anchor_left = 0.85
+anchor_top = 0.76
+anchor_right = 0.85
+anchor_bottom = 0.76
+rect_scale = Vector2( 4.25, 4.25 )
 
 [node name="HealthAnimationTimer" type="Timer" parent="."]
 wait_time = 0.3

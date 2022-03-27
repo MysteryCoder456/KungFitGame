@@ -10,8 +10,11 @@
 [ext_resource path="res://assets/ui/movement_buttons/left_pressed.png" type="Texture" id=8]
 [ext_resource path="res://src/scripts/ControllerButtons.gd" type="Script" id=9]
 
-[node name="MovementButtons" type="Node2D"]
+[node name="MovementButtons" type="Control"]
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="UpButton" type="TouchScreenButton" parent="."]
 position = Vector2( -8, -24 )

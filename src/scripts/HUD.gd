@@ -20,6 +20,7 @@ func _ready():
 func _process(delta):
 	energy_label.text = str(max(round(GameData.energy), 0))
 	coins_label.text = str(GameData.coins)
+	
 	var time_left = health_anim_timer.time_left
 
 	if time_left:

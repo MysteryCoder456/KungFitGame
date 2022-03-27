@@ -45,7 +45,7 @@ GameData="*res://src/scripts/GameData.gd"
 
 window/size/height=544
 window/stretch/mode="2d"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_height"
 
 [gdnative]
 
